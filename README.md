@@ -2,7 +2,12 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [linux-ladder](#linux-ladder)
+- [A-Z:linux学习路径](#a-zlinux%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84)
+  - [前面的话](#%E5%89%8D%E9%9D%A2%E7%9A%84%E8%AF%9D)
+  - [安装linux和使用ssh工具（一天）](#%E5%AE%89%E8%A3%85linux%E5%92%8C%E4%BD%BF%E7%94%A8ssh%E5%B7%A5%E5%85%B7%E4%B8%80%E5%A4%A9)
+  - [用户和群组管理（一天）](#%E7%94%A8%E6%88%B7%E5%92%8C%E7%BE%A4%E7%BB%84%E7%AE%A1%E7%90%86%E4%B8%80%E5%A4%A9)
+- [:point_right:shell:第一门编程语言](#point_rightshell%E7%AC%AC%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80)
+- [参考资料](#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -80,7 +85,7 @@ passwd ${user_name}
 
 # 参考资料
 
-cgsl-V5.04用户手册
+[cgsl-V5.04用户手册]()
 
 
 
