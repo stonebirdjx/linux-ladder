@@ -12,13 +12,6 @@
 
 :point_right:忘记桌面（desktop），回归命令行本质。
 
-:point_right:查看帮助命令。
-
-```
-```
-
-
-
 :point_right:重要的话说三遍，别忘了做笔记，别忘了做笔记，别忘了自己笔记。
 
 ## 安装linux和使用ssh工具（一天）
@@ -41,7 +34,7 @@ ssh连上的那一刻，你就会进入到登录用户的工作目录下。
 
 > 超级用户在系统中的用户ID和组ID都是0。普通用户的用户ID（UID）从500开始编号，并且默认属于与用户名同名的组。组ID（GID）也从500开始编号。
 
-[l]()
+[个人笔记](https://github.com/stonebirdjx/linux-ladder/blob/master/%E7%94%A8%E6%88%B7%E5%92%8C%E7%BE%A4%E7%BB%84.md)
 
 :point_right:目标：能对用户、用户口令（密码）、用户组管理自如，知道相关的系统文件
 
