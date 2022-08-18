@@ -11,9 +11,13 @@
   - [userdel - 删除用户](#userdel---%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7)
   - [passwd - 修改用户密码](#passwd---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81)
   - [chpasswd - 修改当前用户](#chpasswd---%E4%BF%AE%E6%94%B9%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7)
-- [文件管理](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86)
+- [文件管理/目录管理](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86)
   - [chown - 更改文件用户、属组](#chown---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E5%B1%9E%E7%BB%84)
   - [chmod - 更改文件权限](#chmod---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90)
+  - [touch - 创建文件或修改文件访问时间](#touch---%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E6%88%96%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4)
+  - [tree - 树状图列出目录的内容](#tree---%E6%A0%91%E7%8A%B6%E5%9B%BE%E5%88%97%E5%87%BA%E7%9B%AE%E5%BD%95%E7%9A%84%E5%86%85%E5%AE%B9)
+  - [vi/vim - 编辑文件内容](#vivim---%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
+  - [ls - 列出文件目录](#ls---%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -86,7 +90,7 @@ echo "123456"|passwd --stdin stonebird
 
 ## chpasswd - 修改当前用户
 
-# 文件管理
+# 文件管理/目录管理
 
 ## chown - 更改文件用户、属组
 
@@ -115,5 +119,48 @@ chmod +x test.sh
 chmod 644 test.sh
 chmod a=rwx file
 chmod ug=rwx,o=x file
+```
+
+## touch - 创建文件或修改文件访问时间
+
+```bash
+touch ${file_name}
+```
+
+## tree - 树状图列出目录的内容
+
+```bash
+tree path
+```
+
+## vi/vim - 编辑文件内容
+
+```bash
+# 常用快捷键
+:set nu=每行显示行号  
+:set nonu=取消显示行号
+:${line}   ## 0，$
+## 编辑模式
+0=单行首  
+$=单行末
+gg=文件首行  
+G=文件末行  
+u 撤销
+:m,ns/old/new/g=第m行到n行，所有“old“串替为“new“  
+```
+
+## ls - 列出文件目录
+
+```bash
+ls [OPTION]... [FILE]...
+
+# 常用options
+-a	# 显示所有文件 含.开头
+-l  # 详细信息
+-d  # 只列出文件夹
+-f  # 只列出文件
+-r  # 对列出的排序
+-t  # 通过时间排序access time (-u): atime, access, use;
+	# change time (-c): ctime, status;
 ```
 
