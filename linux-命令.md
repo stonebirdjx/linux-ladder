@@ -10,6 +10,7 @@
   - [:point_right:usermod - 修改用户](#point_rightusermod---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7)
   - [:point_right:userdel - 删除用户](#point_rightuserdel---%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7)
   - [:point_right:passwd - 修改用户密码](#point_rightpasswd---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81)
+  - [:point_right:su - 切换用户](#point_rightsu---%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7)
   - [chpasswd - 修改当前用户](#chpasswd---%E4%BF%AE%E6%94%B9%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7)
 - [文件管理/目录管理](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86)
   - [:point_right:chown - 更改文件用户、属组](#point_rightchown---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E5%B1%9E%E7%BB%84)
@@ -50,6 +51,8 @@
   - [:point_right:tar - 归档使用工具](#point_righttar---%E5%BD%92%E6%A1%A3%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7)
   - [:point_right:zip - zip格式压缩文件](#point_rightzip---zip%E6%A0%BC%E5%BC%8F%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6)
   - [:point_right:unzip - 解压zip包](#point_rightunzip---%E8%A7%A3%E5%8E%8Bzip%E5%8C%85)
+  - [gzip 压缩和解压文件（.gz文件）](#gzip-%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6gz%E6%96%87%E4%BB%B6)
+  - [bzip2 - 压缩和解压文件](#bzip2---%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6)
   - [dd - 转换和复制文件](#dd---%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6)
   - [:point_right:chattr - 更改文件隐藏属性](#point_rightchattr---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7)
   - [:point_right:lsattr - 显示文件隐藏属性](#point_rightlsattr---%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7)
@@ -59,6 +62,11 @@
   - [file - 命令用于辨识文件类型](#file---%E5%91%BD%E4%BB%A4%E7%94%A8%E4%BA%8E%E8%BE%A8%E8%AF%86%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B)
   - [:point_right:cut - 按列提取文件内容](#point_rightcut---%E6%8C%89%E5%88%97%E6%8F%90%E5%8F%96%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
   - [od - 八进制输出文件内容](#od---%E5%85%AB%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
+  - [hexdump - 显示文件十六进制格式](#hexdump---%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E6%A0%BC%E5%BC%8F)
+  - [strings - 查找可打印的字符串](#strings---%E6%9F%A5%E6%89%BE%E5%8F%AF%E6%89%93%E5%8D%B0%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2)
+  - [stat - 显示文件或文件系统的详细信息](#stat---%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E6%88%96%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF)
+  - [diff3 - 比较3个文件的不同之处](#diff3---%E6%AF%94%E8%BE%833%E4%B8%AA%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84)
+  - [vimdiff - 同时对比编辑多个文件](#vimdiff---%E5%90%8C%E6%97%B6%E5%AF%B9%E6%AF%94%E7%BC%96%E8%BE%91%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6)
   - [paste - 按对应行合并两个文件](#paste---%E6%8C%89%E5%AF%B9%E5%BA%94%E8%A1%8C%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6)
   - [tmpwatch - 删除暂存文件](#tmpwatch---%E5%88%A0%E9%99%A4%E6%9A%82%E5%AD%98%E6%96%87%E4%BB%B6)
   - [comm - 命令用于比较两个已排过序的文件](#comm---%E5%91%BD%E4%BB%A4%E7%94%A8%E4%BA%8E%E6%AF%94%E8%BE%83%E4%B8%A4%E4%B8%AA%E5%B7%B2%E6%8E%92%E8%BF%87%E5%BA%8F%E7%9A%84%E6%96%87%E4%BB%B6)
@@ -84,6 +92,15 @@
   - [:point_right:ss - 显示活动套接字信息](#point_rightss---%E6%98%BE%E7%A4%BA%E6%B4%BB%E5%8A%A8%E5%A5%97%E6%8E%A5%E5%AD%97%E4%BF%A1%E6%81%AF)
   - [:point_right:free - 显示系统内存使用量情况](#point_rightfree---%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E9%87%8F%E6%83%85%E5%86%B5)
   - [:point_right:lsof - 查看文件的进程信息](#point_rightlsof---%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF)
+- [文件系统和磁盘](#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%92%8C%E7%A3%81%E7%9B%98)
+  - [:point_right:fsck/fsck.ext2/fsck.ext3/fsck.ext4/fsck.xfs - 检查与修复文件系统](#point_rightfsckfsckext2fsckext3fsckext4fsckxfs---%E6%A3%80%E6%9F%A5%E4%B8%8E%E4%BF%AE%E5%A4%8D%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)
+  - [:point_right:mount - 把文件系统挂载到目录](#point_rightmount---%E6%8A%8A%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8C%82%E8%BD%BD%E5%88%B0%E7%9B%AE%E5%BD%95)
+  - [:point_right:umount - 卸载文件系统](#point_rightumount---%E5%8D%B8%E8%BD%BD%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)
+  - [:point_right:du - 查看文件或目录的大小](#point_rightdu---%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95%E7%9A%84%E5%A4%A7%E5%B0%8F)
+  - [:point_right:df - 显示磁盘空间使用情况](#point_rightdf---%E6%98%BE%E7%A4%BA%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5)
+  - [parted - 磁盘分区工具](#parted---%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%B7%A5%E5%85%B7)
+  - [:point_right:fdisk - 管理磁盘分区](#point_rightfdisk---%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA)
+  - [:point_right:lsblk - 查看块设备](#point_rightlsblk---%E6%9F%A5%E7%9C%8B%E5%9D%97%E8%AE%BE%E5%A4%87)
 - [文件传输](#%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93)
   - [:point_right:ftp - ftp协议文件传送](#point_rightftp---ftp%E5%8D%8F%E8%AE%AE%E6%96%87%E4%BB%B6%E4%BC%A0%E9%80%81)
 
@@ -154,6 +171,15 @@ passwd ${user_name}
 # 非交互模式 root 
 --stdin             read new tokens from stdin (root only)
 echo "123456"|passwd --stdin stonebird
+```
+
+## :point_right:su - 切换用户
+
+中间带 `-` 使用用户的环境变量
+
+```bash
+# options
+-c	执行完指定的指令后，即恢复原来的身份
 ```
 
 ## chpasswd - 修改当前用户
@@ -637,6 +663,35 @@ zip -r backup1.zip /etc
 unzip backup1.zip
 ```
 
+## gzip 压缩和解压文件（.gz文件）
+
+gzip 只能针对普通文件（regular file）进行压缩和解压，对于文件夹、符号链接等是不支持的。
+
+```shell
+-a	使用ASCII文字模式
+-d	解开压缩文件  
+-f	强行压缩文件
+-l	列出压缩文件的相关信息
+-c	把压缩后的文件输出到标准输出设备，不去更动原始文件
+-r	递归处理，将指定目录下的所有文件及子目录一并处理 # 对目录下的单个文件
+-q	不显示警告信息
+
+gzip hero.avi
+gzip -d hero.avi.gz
+```
+
+## bzip2 - 压缩和解压文件
+
+由于 bzip2 与 gzip 相比，其压缩稳定性和效果都更好，对应单个文件bzip2 命令和 bunzip2 命令，就可以实现了
+
+```shell
+ bzip2 abc1.txt 
+ bunzip2 A.txt.bz2
+ 
+ tar -xjvf curl-7.47.1.tar.bz2 /dir
+ tar -zvf curl-7.47.1.tar.bz2
+```
+
 ## dd - 转换和复制文件
 
 ```bash
@@ -720,6 +775,65 @@ cut -d : -f 1 /etc/passwd
 ```
 
 ## od - 八进制输出文件内容
+
+## hexdump - 显示文件十六进制格式
+
+```shell
+-n length	只格式化输入文件的前length个字节
+-C	输出规范的十六进制和ASCII码
+-b	单字节八进制显示
+-c	单字节字符显示
+-d	双字节十进制显示
+-o	双字节八进制显示
+-x	双字节十六进制显示
+-s	从偏移量开始输出
+-e	指定格式字符串，格式字符串包含在一对单引号中
+-v	显示所有输入数据
+
+hexdump testfile
+```
+
+## strings - 查找可打印的字符串
+
+在对象文件或二进制文件中
+
+```bash
+ls |strings
+```
+
+## stat - 显示文件或文件系统的详细信息
+
+```shell
+-L	支持符号链接
+-f	显示文件系统的信息
+-t	以简洁的方式输出
+
+stat hurl.go
+  File: hurl.go
+  Size: 938             Blocks: 8          IO Block: 4096   regular file
+Device: fc01h/64513d    Inode: 929074      Links: 1
+Access: (0664/-rw-rw-r--)  Uid: (  500/  ubuntu)   Gid: (  500/  ubuntu)
+Access: 2021-12-05 12:05:42.491584506 +0800
+Modify: 2021-12-05 10:50:02.472892197 +0800
+Change: 2021-12-05 12:05:41.559580684 +0800
+ Birth: -
+```
+
+## diff3 - 比较3个文件的不同之处
+
+~~~shell
+-A	全部显示，有冲突内容用括号括起来
+-a	将所有文件视为文本
+-T	使制表符对齐
+
+diff3 file1 file2 file3
+~~~
+
+## vimdiff - 同时对比编辑多个文件
+
+```shell
+vimdiff file1 file2 
+```
 
 ## paste - 按对应行合并两个文件
 
@@ -1035,6 +1149,120 @@ free -m
 
 ## 例子
 lsof -a
+```
+
+# 文件系统和磁盘
+
+1、XFS是一个具有非常高性能且可扩展的文件系统，同时在大多数要求的应用程序中都会进行常规部署。XFS提供了一种健壮的、优秀的以及功能丰富的文件系统，它具有的可伸缩性能够满足最苛刻的存储需求。
+2、ext4：ext3的升级版本，ext4对ext3做了很多深层次的改进，设计更合理、性能更好、更可靠，同时还引入了一些新功能。
+3、ext3：ext2的升级版本，其主要优点是在ext2的基础上加入了记录数据的日志功能。
+4、ext2：支持标准Unix文件类型，可用于多种存储介质，向上兼容性好。
+
+## :point_right:fsck/fsck.ext2/fsck.ext3/fsck.ext4/fsck.xfs - 检查与修复文件系统
+
+```bash
+## 常用options
+-a	自动修复文件系统
+-f	强制检查
+-A	依照/etc/fstab文件来检查全部文件系统
+-N	不执行指令，仅列出实际执行会进行的动作
+-r	采用互动模式，在执行修复时询问问题
+-R	略过指定的文件系统不予检查
+-t	指定要检查的文件系统类型
+-T	执行fsck指令时，不显示标题信息
+-V	显示指令执行过程
+```
+
+## :point_right:mount - 把文件系统挂载到目录
+
+```bash
+## 常用options
+-t	指定挂载类型
+-a	加载文件“/etc/fstab”中描述的所有文件系统
+-r  以只读的形式挂载
+-rw 以读写的形式挂载
+
+## 例子
+mount /dev/vdb /mnt/stonebird
+```
+
+## :point_right:umount - 卸载文件系统
+
+```bash
+## 常用options
+-a	加载文件“/etc/fstab”中描述的所有文件系统
+
+## 例子
+umount /dev/sdb
+```
+
+## :point_right:du - 查看文件或目录的大小
+
+```bash
+## 常用options
+-a	显示目录中所有文件大小
+-k	以KB为单位显示文件大小
+-m	以MB为单位显示文件大小
+-g	以GB为单位显示文件大小
+-h	以易读方式显示文件大小
+--max-depth=N 指定统计深度
+-s	仅显示总计
+
+## 例子
+du -sh . |sort -n
+```
+
+## :point_right:df - 显示磁盘空间使用情况
+
+```bash
+## 常用options
+-a	显示所有系统文件
+-h	以容易阅读的方式显示
+-H	以1000字节为换算单位来显示
+-t <文件系统类型>	只显示指定类型的文件系统
+-T	输出时显示文件系统类型
+## 例子
+df -h
+```
+
+## parted - 磁盘分区工具
+
+```bash
+parted [options] [device [command [options...]...]]
+
+## 常用options
+-a  为新创建的分区设置对齐方式
+-s  脚本模式
+-v  显示版本号
+-l  列出所有块设备上的分区布局
+-m  显示机器可解析的输出
+```
+
+## :point_right:fdisk - 管理磁盘分区
+
+```bash
+## 常用options
+-l	列出指定的外围设备的分区表状况
+
+## 菜单操作说明
+m ：显示菜单和帮助信息
+a ：活动分区标记/引导分区
+d ：删除分区
+l ：显示分区类型
+n ：新建分区
+p ：显示分区信息
+q ：退出不保存
+t ：设置分区号
+v ：进行分区检查
+w ：保存修改
+x ：扩展应用，高级功能
+```
+
+## :point_right:lsblk - 查看块设备
+
+```bash
+-a	显示所有设备
+-t	显示拓扑结构信息
 ```
 
 
