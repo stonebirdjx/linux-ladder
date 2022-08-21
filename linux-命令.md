@@ -3,79 +3,95 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [系统管理](#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86)
-  - [groupadd - 添加用户组](#groupadd---%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E7%BB%84)
-  - [groupmod - 修改用户组](#groupmod---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%BB%84)
-  - [groupdel - 删除用户组](#groupdel---%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E7%BB%84)
-  - [useradd - 添加用户](#useradd---%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7)
-  - [usermod - 修改用户](#usermod---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7)
-  - [userdel - 删除用户](#userdel---%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7)
-  - [passwd - 修改用户密码](#passwd---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81)
+  - [:point_right:groupadd - 添加用户组](#point_rightgroupadd---%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E7%BB%84)
+  - [:point_right:groupmod - 修改用户组](#point_rightgroupmod---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%BB%84)
+  - [:point_right:groupdel - 删除用户组](#point_rightgroupdel---%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E7%BB%84)
+  - [:point_right:useradd - 添加用户](#point_rightuseradd---%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7)
+  - [:point_right:usermod - 修改用户](#point_rightusermod---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7)
+  - [:point_right:userdel - 删除用户](#point_rightuserdel---%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7)
+  - [:point_right:passwd - 修改用户密码](#point_rightpasswd---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81)
   - [chpasswd - 修改当前用户](#chpasswd---%E4%BF%AE%E6%94%B9%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7)
 - [文件管理/目录管理](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86)
-  - [chown - 更改文件用户、属组](#chown---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E5%B1%9E%E7%BB%84)
-  - [chmod - 更改文件权限](#chmod---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90)
-  - [touch - 创建文件或修改文件访问时间](#touch---%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E6%88%96%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4)
-  - [tree - 树状图列出目录的内容](#tree---%E6%A0%91%E7%8A%B6%E5%9B%BE%E5%88%97%E5%87%BA%E7%9B%AE%E5%BD%95%E7%9A%84%E5%86%85%E5%AE%B9)
-  - [vi/vim - 编辑文件内容](#vivim---%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
-  - [ls - 列出文件目录](#ls---%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95)
-  - [dir - 列出文件](#dir---%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6)
-  - [cd - 切换工作目录](#cd---%E5%88%87%E6%8D%A2%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95)
-  - [pwd - 显示当前工作目录](#pwd---%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95)
-  - [dirs - 显示当前工作目录](#dirs---%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95)
-  - [cp - 文件文件或者目录](#cp---%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95)
-  - [scp - 基于SSH协议远程复制文件或目录](#scp---%E5%9F%BA%E4%BA%8Essh%E5%8D%8F%E8%AE%AE%E8%BF%9C%E7%A8%8B%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95)
+  - [:point_right:chown - 更改文件用户、属组](#point_rightchown---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E5%B1%9E%E7%BB%84)
+  - [:point_right:chmod - 更改文件权限](#point_rightchmod---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90)
+  - [:point_right:touch - 创建文件或修改文件访问时间](#point_righttouch---%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E6%88%96%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4)
+  - [:point_right:tree - 树状图列出目录的内容](#point_righttree---%E6%A0%91%E7%8A%B6%E5%9B%BE%E5%88%97%E5%87%BA%E7%9B%AE%E5%BD%95%E7%9A%84%E5%86%85%E5%AE%B9)
+  - [:point_right:vi/vim - 编辑文件内容](#point_rightvivim---%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
+  - [:point_right:ls - 列出文件目录](#point_rightls---%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95)
+  - [:point_right:dir - 列出文件](#point_rightdir---%E5%88%97%E5%87%BA%E6%96%87%E4%BB%B6)
+  - [:point_right:cd - 切换工作目录](#point_rightcd---%E5%88%87%E6%8D%A2%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95)
+  - [:point_right:pwd - 显示当前工作目录](#point_rightpwd---%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95)
+  - [:point_right:dirs - 显示当前工作目录](#point_rightdirs---%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95)
+  - [:point_right:cp - 文件文件或者目录](#point_rightcp---%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95)
+  - [:point_right:scp - 基于SSH协议远程复制文件或目录](#point_rightscp---%E5%9F%BA%E4%BA%8Essh%E5%8D%8F%E8%AE%AE%E8%BF%9C%E7%A8%8B%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95)
   - [rcp - 远程复制文件或目录](#rcp---%E8%BF%9C%E7%A8%8B%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95)
-  - [mkdir - 创建文件或者目录](#mkdir---%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95)
+  - [:point_right:mkdir - 创建文件或者目录](#point_rightmkdir---%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95)
   - [rmdir - 删除一个空文件夹](#rmdir---%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9)
-  - [rm - 删除文件或目录](#rm---%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95)
-  - [mv - 移动或改名文件](#mv---%E7%A7%BB%E5%8A%A8%E6%88%96%E6%94%B9%E5%90%8D%E6%96%87%E4%BB%B6)
-  - [cat - 查看文件内容](#cat---%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
+  - [:point_right:rm - 删除文件或目录](#point_rightrm---%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95)
+  - [:point_right:mv - 移动或改名文件](#point_rightmv---%E7%A7%BB%E5%8A%A8%E6%88%96%E6%94%B9%E5%90%8D%E6%96%87%E4%BB%B6)
+  - [:point_right:cat - 查看文件内容](#point_rightcat---%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
   - [more - 分页显示文件内容](#more---%E5%88%86%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
-  - [less - 分页显示文件内容](#less---%E5%88%86%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
-  - [head -  显示文件开头的内容](#head----%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%BC%80%E5%A4%B4%E7%9A%84%E5%86%85%E5%AE%B9)
-  - [tail - 显示文件结尾的内容](#tail---%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E7%BB%93%E5%B0%BE%E7%9A%84%E5%86%85%E5%AE%B9)
-  - [grep/egrep - 文本过滤](#grepegrep---%E6%96%87%E6%9C%AC%E8%BF%87%E6%BB%A4)
-  - [awk - 文本和数据进行处理的编程语言](#awk---%E6%96%87%E6%9C%AC%E5%92%8C%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80)
-  - [sed -  批量编辑文本文件](#sed----%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6)
-  - [ln - 创建链接](#ln---%E5%88%9B%E5%BB%BA%E9%93%BE%E6%8E%A5)
-  - [diff - 比较文件内容差异](#diff---%E6%AF%94%E8%BE%83%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E5%B7%AE%E5%BC%82)
+  - [:point_right:less - 分页显示文件内容](#point_rightless---%E5%88%86%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
+  - [:point_right:head -  显示文件开头的内容](#point_righthead----%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%BC%80%E5%A4%B4%E7%9A%84%E5%86%85%E5%AE%B9)
+  - [:point_right:tail - 显示文件结尾的内容](#point_righttail---%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E7%BB%93%E5%B0%BE%E7%9A%84%E5%86%85%E5%AE%B9)
+  - [:point_right:grep/egrep - 文本过滤](#point_rightgrepegrep---%E6%96%87%E6%9C%AC%E8%BF%87%E6%BB%A4)
+  - [:point_right:awk - 文本和数据进行处理的编程语言](#point_rightawk---%E6%96%87%E6%9C%AC%E5%92%8C%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80)
+  - [:point_right:sed -  批量编辑文本文件](#point_rightsed----%E6%89%B9%E9%87%8F%E7%BC%96%E8%BE%91%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6)
+  - [:point_right:ln - 创建链接](#point_rightln---%E5%88%9B%E5%BB%BA%E9%93%BE%E6%8E%A5)
+  - [:point_right:diff - 比较文件内容差异](#point_rightdiff---%E6%AF%94%E8%BE%83%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E5%B7%AE%E5%BC%82)
   - [which - 找查命令文件路径](#which---%E6%89%BE%E6%9F%A5%E5%91%BD%E4%BB%A4%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84)
-  - [whereis - 找查命令文件路径](#whereis---%E6%89%BE%E6%9F%A5%E5%91%BD%E4%BB%A4%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84)
-  - [find - 查找文件位置](#find---%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE)
-  - [locate/slocate - 查找文件位置](#locateslocate---%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE)
-  - [sort - 将文件进行排序并输出](#sort---%E5%B0%86%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F%E5%B9%B6%E8%BE%93%E5%87%BA)
-  - [uniq - 去除文件中的重复内容行](#uniq---%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%86%85%E5%AE%B9%E8%A1%8C)
-  - [split - 文件分割](#split---%E6%96%87%E4%BB%B6%E5%88%86%E5%89%B2)
-  - [shuf - 打乱顺序产生随机的排列](#shuf---%E6%89%93%E4%B9%B1%E9%A1%BA%E5%BA%8F%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E7%9A%84%E6%8E%92%E5%88%97)
-  - [tar - 归档使用工具](#tar---%E5%BD%92%E6%A1%A3%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7)
-  - [zip - zip格式压缩文件](#zip---zip%E6%A0%BC%E5%BC%8F%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6)
-  - [unzip - 解压zip包](#unzip---%E8%A7%A3%E5%8E%8Bzip%E5%8C%85)
+  - [:point_right:whereis - 找查命令文件路径](#point_rightwhereis---%E6%89%BE%E6%9F%A5%E5%91%BD%E4%BB%A4%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84)
+  - [:point_right:find - 查找文件位置](#point_rightfind---%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE)
+  - [:point_right:locate/slocate - 查找文件位置](#point_rightlocateslocate---%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE)
+  - [:point_right:sort - 将文件进行排序并输出](#point_rightsort---%E5%B0%86%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F%E5%B9%B6%E8%BE%93%E5%87%BA)
+  - [:point_right:uniq - 去除文件中的重复内容行](#point_rightuniq---%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%86%85%E5%AE%B9%E8%A1%8C)
+  - [:point_right:split - 文件分割](#point_rightsplit---%E6%96%87%E4%BB%B6%E5%88%86%E5%89%B2)
+  - [:point_right:shuf - 打乱顺序产生随机的排列](#point_rightshuf---%E6%89%93%E4%B9%B1%E9%A1%BA%E5%BA%8F%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E7%9A%84%E6%8E%92%E5%88%97)
+  - [:point_right:tar - 归档使用工具](#point_righttar---%E5%BD%92%E6%A1%A3%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7)
+  - [:point_right:zip - zip格式压缩文件](#point_rightzip---zip%E6%A0%BC%E5%BC%8F%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6)
+  - [:point_right:unzip - 解压zip包](#point_rightunzip---%E8%A7%A3%E5%8E%8Bzip%E5%8C%85)
   - [dd - 转换和复制文件](#dd---%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6)
-  - [chattr - 更改文件隐藏属性](#chattr---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7)
-  - [lsattr - 显示文件隐藏属性](#lsattr---%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7)
+  - [:point_right:chattr - 更改文件隐藏属性](#point_rightchattr---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7)
+  - [:point_right:lsattr - 显示文件隐藏属性](#point_rightlsattr---%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E5%B1%9E%E6%80%A7)
   - [cksum - 检查文件](#cksum---%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6)
-  - [md5sum - 检查文件md5值](#md5sum---%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6md5%E5%80%BC)
+  - [:point_right:md5sum - 检查文件md5值](#point_rightmd5sum---%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6md5%E5%80%BC)
   - [cmp - 比较文件差异](#cmp---%E6%AF%94%E8%BE%83%E6%96%87%E4%BB%B6%E5%B7%AE%E5%BC%82)
   - [file - 命令用于辨识文件类型](#file---%E5%91%BD%E4%BB%A4%E7%94%A8%E4%BA%8E%E8%BE%A8%E8%AF%86%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B)
-  - [cut - 按列提取文件内容](#cut---%E6%8C%89%E5%88%97%E6%8F%90%E5%8F%96%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
+  - [:point_right:cut - 按列提取文件内容](#point_rightcut---%E6%8C%89%E5%88%97%E6%8F%90%E5%8F%96%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
   - [od - 八进制输出文件内容](#od---%E5%85%AB%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9)
   - [paste - 按对应行合并两个文件](#paste---%E6%8C%89%E5%AF%B9%E5%BA%94%E8%A1%8C%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6)
   - [tmpwatch - 删除暂存文件](#tmpwatch---%E5%88%A0%E9%99%A4%E6%9A%82%E5%AD%98%E6%96%87%E4%BB%B6)
   - [comm - 命令用于比较两个已排过序的文件](#comm---%E5%91%BD%E4%BB%A4%E7%94%A8%E4%BA%8E%E6%AF%94%E8%BE%83%E4%B8%A4%E4%B8%AA%E5%B7%B2%E6%8E%92%E8%BF%87%E5%BA%8F%E7%9A%84%E6%96%87%E4%BB%B6)
-  - [tr - 字符转换](#tr---%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2)
-  - [expr - 算术表达式](#expr---%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F)
-  - [let - 算术表达式](#let---%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F)
-  - [wc-  统计文件的字节数、单词数、行数](#wc---%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%97%E8%8A%82%E6%95%B0%E5%8D%95%E8%AF%8D%E6%95%B0%E8%A1%8C%E6%95%B0)
+  - [:point_right:tr - 字符转换](#point_righttr---%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2)
+  - [:point_right:expr - 算术表达式](#point_rightexpr---%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F)
+  - [:point_right:let - 算术表达式](#point_rightlet---%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F)
+  - [:point_right:wc -  统计文件的字节数、单词数、行数](#point_rightwc----%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%97%E8%8A%82%E6%95%B0%E5%8D%95%E8%AF%8D%E6%95%B0%E8%A1%8C%E6%95%B0)
   - [zcat/zgrep - 过滤压缩包里面的内容](#zcatzgrep---%E8%BF%87%E6%BB%A4%E5%8E%8B%E7%BC%A9%E5%8C%85%E9%87%8C%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9)
   - [tac - 反向打印文本](#tac---%E5%8F%8D%E5%90%91%E6%89%93%E5%8D%B0%E6%96%87%E6%9C%AC)
+  - [:point_right:dos2unix - 将文本文件转成unix格式](#point_rightdos2unix---%E5%B0%86%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E8%BD%AC%E6%88%90unix%E6%A0%BC%E5%BC%8F)
+- [进程和监控](#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%9B%91%E6%8E%A7)
+  - [:point_right:ps - 查看进程](#point_rightps---%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B)
+  - [:point_right:top - 实时显示系统运行状态](#point_righttop---%E5%AE%9E%E6%97%B6%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81)
+  - [iotop - 监视磁盘I/O状态](#iotop---%E7%9B%91%E8%A7%86%E7%A3%81%E7%9B%98io%E7%8A%B6%E6%80%81)
+  - [iftop - 套接字及进程的网络利用率](#iftop---%E5%A5%97%E6%8E%A5%E5%AD%97%E5%8F%8A%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BD%91%E7%BB%9C%E5%88%A9%E7%94%A8%E7%8E%87)
+  - [iostat - 监视系统输入输出设备和CPU的使用情况](#iostat---%E7%9B%91%E8%A7%86%E7%B3%BB%E7%BB%9F%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87%E5%92%8Ccpu%E7%9A%84%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5)
+  - [:point_right:kill - 杀死进程](#point_rightkill---%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B)
+  - [pkill - 按照进程名杀死进程](#pkill---%E6%8C%89%E7%85%A7%E8%BF%9B%E7%A8%8B%E5%90%8D%E6%9D%80%E6%AD%BB%E8%BF%9B%E7%A8%8B)
+  - [killall - 使用进程名称来杀死一组进程](#killall---%E4%BD%BF%E7%94%A8%E8%BF%9B%E7%A8%8B%E5%90%8D%E7%A7%B0%E6%9D%A5%E6%9D%80%E6%AD%BB%E4%B8%80%E7%BB%84%E8%BF%9B%E7%A8%8B)
+  - [vmstat - 显示虚拟内存状态](#vmstat---%E6%98%BE%E7%A4%BA%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%8A%B6%E6%80%81)
+  - [:point_right:dstat - 全能系统信息统计工具](#point_rightdstat---%E5%85%A8%E8%83%BD%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E7%BB%9F%E8%AE%A1%E5%B7%A5%E5%85%B7)
+  - [:point_right:netstat - 显示网络状态](#point_rightnetstat---%E6%98%BE%E7%A4%BA%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81)
+  - [:point_right:ss - 显示活动套接字信息](#point_rightss---%E6%98%BE%E7%A4%BA%E6%B4%BB%E5%8A%A8%E5%A5%97%E6%8E%A5%E5%AD%97%E4%BF%A1%E6%81%AF)
+  - [:point_right:free - 显示系统内存使用量情况](#point_rightfree---%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E9%87%8F%E6%83%85%E5%86%B5)
+  - [:point_right:lsof - 查看文件的进程信息](#point_rightlsof---%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF)
 - [文件传输](#%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93)
-  - [ftp - ftp协议文件传送](#ftp---ftp%E5%8D%8F%E8%AE%AE%E6%96%87%E4%BB%B6%E4%BC%A0%E9%80%81)
+  - [:point_right:ftp - ftp协议文件传送](#point_rightftp---ftp%E5%8D%8F%E8%AE%AE%E6%96%87%E4%BB%B6%E4%BC%A0%E9%80%81)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # 系统管理
 
-## groupadd - 添加用户组
+## :point_right:groupadd - 添加用户组
 
 :point_right:用户文件/etc/group。
 
@@ -86,11 +102,11 @@ groupadd [options] ${group_name}
 -g, --gid GID # 用户组 组id
 ```
 
-## groupmod - 修改用户组
+## :point_right:groupmod - 修改用户组
 
-## groupdel - 删除用户组
+## :point_right:groupdel - 删除用户组
 
- ## useradd - 添加用户
+ ## :point_right:useradd - 添加用户
 
 :point_right:用户文件/etc/passwd。
 
@@ -107,7 +123,7 @@ groupadd [options] ${group_name}
  useradd stonebird
 ```
 
-## usermod - 修改用户
+## :point_right:usermod - 修改用户
 
 ```bash
 usermod [options] ${user_name}
@@ -116,7 +132,7 @@ usermod [options] ${user_name}
 usermod -g 1002 stonebird
 ```
 
-## userdel - 删除用户
+## :point_right:userdel - 删除用户
 
 ```bash
 userdel [options] ${user_name}
@@ -128,7 +144,7 @@ userdel stonebird
 userdel -r stonebird
 ```
 
-## passwd - 修改用户密码
+## :point_right:passwd - 修改用户密码
 
 :point_right:用户文件/etc/shadow。
 
@@ -144,7 +160,7 @@ echo "123456"|passwd --stdin stonebird
 
 # 文件管理/目录管理
 
-## chown - 更改文件用户、属组
+## :point_right:chown - 更改文件用户、属组
 
 ```bash
  chown [OPTION]... [OWNER][:[GROUP]] FILE
@@ -157,7 +173,7 @@ echo "123456"|passwd --stdin stonebird
  chown -R stonebird:stonebird test.txt
 ```
 
-## chmod - 更改文件权限
+## :point_right:chmod - 更改文件权限
 
 ```bash
 chmod [OPTION]... MODE[,MODE]... FILE...
@@ -173,19 +189,19 @@ chmod a=rwx file
 chmod ug=rwx,o=x file
 ```
 
-## touch - 创建文件或修改文件访问时间
+## :point_right:touch - 创建文件或修改文件访问时间
 
 ```bash
 touch ${file_name}
 ```
 
-## tree - 树状图列出目录的内容
+## :point_right:tree - 树状图列出目录的内容
 
 ```bash
 tree path
 ```
 
-## vi/vim - 编辑文件内容
+## :point_right:vi/vim - 编辑文件内容
 
 ```bash
 # 常用快捷键
@@ -201,7 +217,7 @@ u 撤销
 :m,ns/old/new/g=第m行到n行，所有“old“串替为“new“  
 ```
 
-## ls - 列出文件目录
+## :point_right:ls - 列出文件目录
 
 ```bash
 ls [OPTION]... [FILE]...
@@ -216,7 +232,7 @@ ls [OPTION]... [FILE]...
 	# change time (-c): ctime, status;
 ```
 
-## dir - 列出文件
+## :point_right:dir - 列出文件
 
 ```bash
 dir [OPTION]... [FILE]...
@@ -224,7 +240,7 @@ dir [OPTION]... [FILE]...
 # 常用和 ls 一样 
 ```
 
-## cd - 切换工作目录
+## :point_right:cd - 切换工作目录
 
 ```bash
 cd dir
@@ -237,11 +253,11 @@ cd . # 当前
 cd .. # 切换到上层
 ```
 
-## pwd - 显示当前工作目录
+## :point_right:pwd - 显示当前工作目录
 
-## dirs - 显示当前工作目录
+## :point_right:dirs - 显示当前工作目录
 
-## cp - 文件文件或者目录
+## :point_right:cp - 文件文件或者目录
 
 ```bash
 cp [OPTION]... [-T] SOURCE DEST
@@ -253,7 +269,7 @@ cp [OPTION]... [-T] SOURCE DEST
 -r	递归复制文件和目录
 ```
 
-## scp - 基于SSH协议远程复制文件或目录
+## :point_right:scp - 基于SSH协议远程复制文件或目录
 
 ```bash
 scp [OPTION]... SOURCE DEST
@@ -280,7 +296,7 @@ rcp [OPTION]... SOURCE DEST
 -D	指定远程服务器的端口号
 ```
 
-## mkdir - 创建文件或者目录
+## :point_right:mkdir - 创建文件或者目录
 
 ```bash
 mkdir [OPTION]... DIRECTORY...
@@ -304,7 +320,7 @@ rmdir [OPTION]... DIRECTORY...
 -v	显示命令的详细执行过程
 ```
 
-## rm - 删除文件或目录
+## :point_right:rm - 删除文件或目录
 
 ```bash
 rm [OPTION]... [FILE]...
@@ -319,7 +335,7 @@ rm [OPTION]... [FILE]...
 rm -rf /home/stonebird
 ```
 
-## mv - 移动或改名文件
+## :point_right:mv - 移动或改名文件
 
 ```bash
 mv [OPTION]... SOURCE... DIRECTORY
@@ -334,7 +350,7 @@ mv data /home/stonebird/
 mv run.sh run_test.sh
 ```
 
-## cat - 查看文件内容
+## :point_right:cat - 查看文件内容
 
 ```bash
 cat [OPTION]... [FILE]...
@@ -373,7 +389,7 @@ Ctrl+F 向下滚动一屏
 Ctrl+B 返回上一屏
 ```
 
-## less - 分页显示文件内容
+## :point_right:less - 分页显示文件内容
 
 ```bash
 less  [options] <file>...
@@ -385,7 +401,7 @@ less  [options] <file>...
 [pageup]： 向上翻动一页
 ```
 
-## head -  显示文件开头的内容
+## :point_right:head -  显示文件开头的内容
 
 ```bash
 head [OPTION]... [FILE]...
@@ -397,7 +413,7 @@ head [OPTION]... [FILE]...
 head -n 50 run.txt
 ```
 
-## tail - 显示文件结尾的内容
+## :point_right:tail - 显示文件结尾的内容
 
 ```bash
 tail [OPTION]... [FILE]...
@@ -411,7 +427,7 @@ tail -n 50 run.txt
 tail -f run.log
 ```
 
-## grep/egrep - 文本过滤
+## :point_right:grep/egrep - 文本过滤
 
 ```BASH
 grep [OPTION]... PATTERNS [FILE]...
@@ -424,7 +440,7 @@ grep [OPTION]... PATTERNS [FILE]...
 -E	支持扩展的正则表达式
 ```
 
-## awk - 文本和数据进行处理的编程语言
+## :point_right:awk - 文本和数据进行处理的编程语言
 
 ```bash
 awk [POSIX or GNU style options] -f progfile [--] file ...
@@ -446,7 +462,7 @@ ORS	输出记录分隔符
 RS	控制记录分隔符
 ```
 
-## sed -  批量编辑文本文件
+## :point_right:sed -  批量编辑文本文件
 
 ```bash
 sed [OPTION]... {script-only-if-no-other-script} [input-file]...
@@ -464,7 +480,7 @@ p ：打印，亦即将某个选择的数据印出。通常 p 会与参数 sed -
 s ：取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正则表达式！例如 1,20s/old/new/g 就是啦！
 ```
 
-## ln - 创建链接
+## :point_right:ln - 创建链接
 
 软连接：L开始，删除源文件，会影响链接文件
 硬链接：和源文件一样的基本信息，删除原文件对链接文件没影响
@@ -476,7 +492,7 @@ ln [OPTION]... [-T] TARGET LINK_NAME
 -s  创建软连接
 ```
 
-## diff - 比较文件内容差异
+## :point_right:diff - 比较文件内容差异
 
 ```bash
 diff [OPTION]... FILES
@@ -488,7 +504,7 @@ diff [OPTION]... FILES
 
 ## which - 找查命令文件路径
 
-## whereis - 找查命令文件路径
+## :point_right:whereis - 找查命令文件路径
 
 ```bash
 ## 常用options
@@ -497,7 +513,7 @@ diff [OPTION]... FILES
 -m	查找man手册文件
 ```
 
-## find - 查找文件位置
+## :point_right:find - 查找文件位置
 
 ```bash
 find [path...] [expression]
@@ -531,7 +547,7 @@ l: 符号连结
 find / -type d -perm 1777
 ```
 
-## locate/slocate - 查找文件位置
+## :point_right:locate/slocate - 查找文件位置
 
 ```bash
 locate ${file_name}
@@ -540,7 +556,7 @@ locate ${file_name}
 -d 指定目录
 ```
 
-## sort - 将文件进行排序并输出
+## :point_right:sort - 将文件进行排序并输出
 
 ```bash
 sort [OPTION]... [FILE]...
@@ -555,7 +571,7 @@ sort [OPTION]... [FILE]...
 sort -t : -k 3 -n user.txt
 ```
 
-## uniq - 去除文件中的重复内容行
+## :point_right:uniq - 去除文件中的重复内容行
 
 ```bash
 uniq [OPTION]... [INPUT [OUTPUT]]
@@ -567,7 +583,7 @@ uniq [OPTION]... [INPUT [OUTPUT]]
 -i, --ignore-case   忽略大小写差异
 ```
 
-## split - 文件分割
+## :point_right:split - 文件分割
 
 ```bash
 split [OPTION]... [FILE [PREFIX]]
@@ -577,13 +593,13 @@ split [OPTION]... [FILE [PREFIX]]
 -l  指定多少行
 ```
 
-## shuf - 打乱顺序产生随机的排列
+## :point_right:shuf - 打乱顺序产生随机的排列
 
 ```bash
 -e	将每个ARG视为输入行
 ```
 
-## tar - 归档使用工具
+## :point_right:tar - 归档使用工具
 
 ```bash
 tar [OPTION...] [FILE]...
@@ -605,7 +621,7 @@ tar cjvf backup2.tar.bz2 /etc
 tar xvf backup4.tar -C /etc
 ```
 
-## zip - zip格式压缩文件
+## :point_right:zip - zip格式压缩文件
 
 ```bash
 ## 常用options
@@ -615,7 +631,7 @@ tar xvf backup4.tar -C /etc
 zip -r backup1.zip /etc
 ```
 
-## unzip - 解压zip包
+## :point_right:unzip - 解压zip包
 
 ```bash
 unzip backup1.zip
@@ -630,7 +646,7 @@ dd OPTION
 dd if=anaconda-ks.cfg of=ana.cfg count=1 bs=50
 ```
 
-## chattr - 更改文件隐藏属性
+## :point_right:chattr - 更改文件隐藏属性
 
 ```bash
 chattr [-pRVf] [-+=aAcCdDeijPsStTuFx] [-v version] files...
@@ -651,7 +667,7 @@ a	仅允许补充（追加）内容，无法覆盖/删除内容（Append Only）
 chattr +i run.sh
 ```
 
-## lsattr - 显示文件隐藏属性
+## :point_right:lsattr - 显示文件隐藏属性
 
 ```bash
 ## 常用options
@@ -669,7 +685,7 @@ lsattr run.sh
 cksum ${file_name}
 ```
 
-## md5sum - 检查文件md5值
+## :point_right:md5sum - 检查文件md5值
 
 ```bash
 md5sum ${file_name}
@@ -687,7 +703,7 @@ cmp file...
 file ${file_name}
 ```
 
-## cut - 按列提取文件内容
+## :point_right:cut - 按列提取文件内容
 
 ```bash
 cut [OPTIONS] FILE...
@@ -733,7 +749,7 @@ tmpwatch 24 /tmp/  #删除tmp目录24小时未使用的文件
 -3	不显示只在第1和第2个文件里出现过的列
 ```
 
-## tr - 字符转换
+## :point_right:tr - 字符转换
 
 ```bash
 ## 常用options
@@ -746,7 +762,7 @@ tmpwatch 24 /tmp/  #删除tmp目录24小时未使用的文件
 echo "HELLO WORLD" | tr 'A-Z' 'a-z'
 ```
 
-## expr - 算术表达式
+## :point_right:expr - 算术表达式
 
 ```bash
 ## 例子
@@ -766,7 +782,7 @@ expr 10 \* 10 # * 需要转义
 expr \( 10 + 10 \) \* 2 + 100
 ```
 
-## let - 算术表达式
+## :point_right:let - 算术表达式
 
 ```bash
 ## 例子
@@ -774,7 +790,7 @@ a=1
 let a++ # a=`expr $a + 1`
 ```
 
-## wc-  统计文件的字节数、单词数、行数
+## :point_right:wc -  统计文件的字节数、单词数、行数
 
 ```bash
 ## 常用options
@@ -790,13 +806,242 @@ wc -l stonebird.txt
 
 ## zcat/zgrep - 过滤压缩包里面的内容
 
+```bash
+zcat ${tar_name}
+```
+
 ## tac - 反向打印文本
 
- 
+```bash
+tac ${file_name}
+```
+
+ ## :point_right:dos2unix - 将文本文件转成unix格式
+
+```bash
+dos2unix ${file_name}
+```
+
+# 进程和监控
+
+## :point_right:ps - 查看进程
+
+```bash
+ps [options]
+
+## 常用options
+a	显示现行终端机下的所有程序，包括其他用户的程序
+e	列出程序时，显示每个程序所使用的环境变量
+f	用ASCII字符显示树状结构，表达程序间的相互关系
+g	显示现行终端机下的所有程序，包括所属组的程序
+-G <群组识别码>	列出属于该群组的程序的状况
+h	不显示标题列
+-H	显示树状结构，表示程序间的相互关系
+-l	采用详细的格式来显示程序状况
+L	列出栏位的相关信息
+u	以用户为主的格式来显示程序状况
+-U <用户识别码>	列出属于该用户的程序的状况
+U <用户名称>	列出属于该用户的程序的状况
+v	采用虚拟内存的格式显示程序状况
+x	显示所有程序，不以终端机来区分
+
+## 例子
+ps -ef
+ps -auxl
+```
+
+## :point_right:top - 实时显示系统运行状态
+
+```bash
+top [options]
+
+## 常用options
+-d <秒>	改变显示的更新速度
+-p pid(s)  查看指定pid
+-o field 
+-w [cols]
+
+## 例子
+top
+top -p 1
+```
+
+## iotop - 监视磁盘I/O状态
+
+```bash
+## 常用options
+-o	只显示有io操作的进程
+-n NUM	显示NUM次，主要用于非交互式模式
+-d SEC	间隔SEC秒显示一次
+-p PID	监控的进程pid
+-u USER	监控的进程用户
+```
+
+## iftop - 套接字及进程的网络利用率
+
+```bash
+## 常用options
+-i	指定要监控的网卡
+```
+
+## iostat - 监视系统输入输出设备和CPU的使用情况
+
+```bash
+## 常用options
+-c	仅显示CPU使用情况
+-d	仅显示设备利用率
+```
+
+## :point_right:kill - 杀死进程
+
+```bash
+## 常用options
+-l 列出信号量
+
+## 常用信号量 -9 -15
+```
+
+## pkill - 按照进程名杀死进程
+
+```bash
+## 常用options
+-o	仅向找到的最小（起始）进程号发送信号
+-n	仅向找到的最大（结束）进程号发送信号
+-P	指定父进程号发送信号
+-g	指定进程组
+-t	指定开启进程的终端
+
+## 例子
+pkill httpd
+pkill -o
+pkill -n
+```
+
+## killall - 使用进程名称来杀死一组进程
+```bash
+## 常用options
+-u	杀死指定用户的进程
+
+## 例子
+killall -9 nginx
+```
+
+## vmstat - 显示虚拟内存状态
+
+```bash
+## 常用options
+-a	显示活动内页
+-f	显示启动后创建的进程总数
+-m	显示slab信息
+-n	头信息仅显示一次
+-s	以表格方式显示事件计数器和内存状态
+-d	报告磁盘状态
+-p	显示指定的硬盘分区状态
+
+## 例子
+vmstat -p /dev/vdb1
+```
+
+## :point_right:dstat - 全能系统信息统计工具
+```bash
+## 常用options
+-c	显示CPU系统占用，用户占用，空闲，等待，中断，软件中断等信息
+-d	显示磁盘读写数据大小
+-n	显示网络状态
+-l	显示系统负载情况
+-m	显示内存使用情况
+-g	显示页面使用情况
+-p	显示进程状态
+-s	显示交换分区使用情况
+-r	I/O请求情况
+-y	系统状态
+
+## 例子
+dstat -n
+dstat -d
+```
+
+## :point_right:netstat - 显示网络状态
+
+```bash
+## 	常用options
+-a	显示所有连线中的Socket
+-p	显示正在使用Socket的程序识别码和程序名称
+-l	仅列出在监听的服务状态
+-t	显示TCP传输协议的连线状况
+-u	显示UDP传输协议的连线状况
+-i	显示网络界面信息表单
+-r	显示路由表信息
+-n	直接使用IP地址，不通过域名服务器
+
+## 例子
+netstat -a
+```
+
+## :point_right:ss - 显示活动套接字信息
+
+```bash
+## 常用options
+-n	不解析服务名称，已数字方式显示
+-a	显示所有套接字
+-l	显示处于监听状态的套接字
+-o	显示计时器信息
+-e	显示详细的套接字信息
+-m	显示套接字的内存使用情况
+-p	显示使用套接字的进程
+-i	显示内部的TCP信息
+-s	显示套接字使用概况
+-4	仅显示ipv4的套接字
+-6	仅显示ipv6的套接字
+-0	显示PACKET套接字
+-t	只显示TCP套接字
+-u	只显示UDP套接字
+-d	只显示DCCP套接字
+-w	只显示RAW套接字
+-x	只显示 Unix套接字
+-D	将原始TCP套接字信息转储到文件
+
+## 例子
+ss -t
+```
+
+## :point_right:free - 显示系统内存使用量情况
+
+```bash
+## 常用options
+-b	以Byte显示内存使用情况
+-k	以kb为单位显示内存使用情况
+-m	以mb为单位显示内存使用情况
+-g	以gb为单位显示内存使用情况
+
+## 例子
+free -m
+```
+
+## :point_right:lsof - 查看文件的进程信息
+
+```bash
+## 常用options
+-a	列出打开文件存在的进程
+-c <进程名>	列出指定进程所打开的文件
+-g	列出GID号进程详情
+-d <文件号>	列出占用该文件号的进程
++d <目录>	列出目录下被打开的文件
++D <目录>	递归列出目录下被打开的文件
+-n <目录>	列出使用NFS的文件
+-i <条件>	列出符合条件的进程
+-p <进程号>	列出指定进程号所打开的文件
+-u	列出UID号进程详情
+
+## 例子
+lsof -a
+```
+
+
 
 # 文件传输
 
-## ftp - ftp协议文件传送
+## :point_right:ftp - ftp协议文件传送
 
 ```bash
 FTP>ascii: 设定以ASCII方式传送文件(缺省值)
