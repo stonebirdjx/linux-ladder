@@ -12,6 +12,32 @@
   - [:point_right:passwd - 修改用户密码](#point_rightpasswd---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81)
   - [:point_right:su - 切换用户](#point_rightsu---%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7)
   - [chpasswd - 修改当前用户](#chpasswd---%E4%BF%AE%E6%94%B9%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7)
+  - [:point_right:date - 显示或设置系统日期与时间](#point_rightdate---%E6%98%BE%E7%A4%BA%E6%88%96%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E6%97%A5%E6%9C%9F%E4%B8%8E%E6%97%B6%E9%97%B4)
+  - [finger - 查询其他使用者的资料](#finger---%E6%9F%A5%E8%AF%A2%E5%85%B6%E4%BB%96%E4%BD%BF%E7%94%A8%E8%80%85%E7%9A%84%E8%B5%84%E6%96%99)
+  - [:point_right:who/whoami/w - 查看当前登录用户信息](#point_rightwhowhoamiw---%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF)
+  - [:point_right:sleep - 延迟当前命令的执行(s)](#point_rightsleep---%E5%BB%B6%E8%BF%9F%E5%BD%93%E5%89%8D%E5%91%BD%E4%BB%A4%E7%9A%84%E6%89%A7%E8%A1%8Cs)
+  - [usleep - 延迟当前命令的执行(us)](#usleep---%E5%BB%B6%E8%BF%9F%E5%BD%93%E5%89%8D%E5%91%BD%E4%BB%A4%E7%9A%84%E6%89%A7%E8%A1%8Cus)
+  - [:point_right:crontab - 管理定时计划任务](#point_rightcrontab---%E7%AE%A1%E7%90%86%E5%AE%9A%E6%97%B6%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1)
+  - [at - 一次性定时计划任务](#at---%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AE%9A%E6%97%B6%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1)
+  - [batch - 指定时间执行任务](#batch---%E6%8C%87%E5%AE%9A%E6%97%B6%E9%97%B4%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1)
+  - [:point_right:alias - 设置命令别名](#point_rightalias---%E8%AE%BE%E7%BD%AE%E5%91%BD%E4%BB%A4%E5%88%AB%E5%90%8D)
+  - [:point_right:time - 指令执行时所消耗的时间](#point_righttime---%E6%8C%87%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%97%B6%E6%89%80%E6%B6%88%E8%80%97%E7%9A%84%E6%97%B6%E9%97%B4)
+  - [declare - 声明shell变量](#declare---%E5%A3%B0%E6%98%8Eshell%E5%8F%98%E9%87%8F)
+  - [:point_right:export - 查看或设置环境变量](#point_rightexport---%E6%9F%A5%E7%9C%8B%E6%88%96%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F)
+  - [:point_right:systemctl - 管理系统服务](#point_rightsystemctl---%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1)
+  - [:point_right:service - 管理系统服务](#point_rightservice---%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1)
+  - [:point_right:clear - 清除屏幕](#point_rightclear---%E6%B8%85%E9%99%A4%E5%B1%8F%E5%B9%95)
+  - [:point_right:dmesg - 显示开机信息](#point_rightdmesg---%E6%98%BE%E7%A4%BA%E5%BC%80%E6%9C%BA%E4%BF%A1%E6%81%AF)
+  - [:point_right:halt - 关闭当前服务器系统](#point_righthalt---%E5%85%B3%E9%97%AD%E5%BD%93%E5%89%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F)
+  - [shutdown - 关闭服务器的系统](#shutdown---%E5%85%B3%E9%97%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%B3%BB%E7%BB%9F)
+  - [:point_right:reboot - 重启系统](#point_rightreboot---%E9%87%8D%E5%90%AF%E7%B3%BB%E7%BB%9F)
+  - [lsmod - 加载kernel模块管理](#lsmod---%E5%8A%A0%E8%BD%BDkernel%E6%A8%A1%E5%9D%97%E7%AE%A1%E7%90%86)
+  - [:point_right:modprobe - kernel模块智能加载工具](#point_rightmodprobe---kernel%E6%A8%A1%E5%9D%97%E6%99%BA%E8%83%BD%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%85%B7)
+  - [insmod - 用于载入kernel模块](#insmod---%E7%94%A8%E4%BA%8E%E8%BD%BD%E5%85%A5kernel%E6%A8%A1%E5%9D%97)
+  - [rmmod - 用于删除kernel模块](#rmmod---%E7%94%A8%E4%BA%8E%E5%88%A0%E9%99%A4kernel%E6%A8%A1%E5%9D%97)
+  - [modinfo - 显示kernel模块的信息](#modinfo---%E6%98%BE%E7%A4%BAkernel%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BF%A1%E6%81%AF)
+  - [:point_right:sysctl - 配置内核参数](#point_rightsysctl---%E9%85%8D%E7%BD%AE%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0)
+  - [:point_right:kdump - 系统崩溃时记录日志](#point_rightkdump---%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83%E6%97%B6%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97)
 - [文件管理/目录管理](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86)
   - [:point_right:chown - 更改文件用户、属组](#point_rightchown---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E5%B1%9E%E7%BB%84)
   - [:point_right:chmod - 更改文件权限](#point_rightchmod---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90)
@@ -183,6 +209,262 @@ echo "123456"|passwd --stdin stonebird
 ```
 
 ## chpasswd - 修改当前用户
+
+## :point_right:date - 显示或设置系统日期与时间
+
+```bash
+date [OPTION]... [+FORMAT]
+
+## 例子
+date  +"%Y-%m-%d %H:%M:%S"
+date +%s
+```
+
+## finger - 查询其他使用者的资料
+
+```bash
+finger root
+```
+
+## :point_right:who/whoami/w - 查看当前登录用户信息
+
+## :point_right:sleep - 延迟当前命令的执行(s)
+
+```bash
+## 常用options
+number 	时间长度，后面可接 s、m、h 或 d
+<数字>s	秒数
+<数字>m	分钟
+<数字>h	小时
+<数字>d	日期
+
+## 例子
+sleep 10  # 默认 s
+sleep 3m
+```
+
+## usleep - 延迟当前命令的执行(us)
+
+```bash
+# 延迟0.1秒
+sleep 0.1
+usleep 100000
+ 
+# 延迟 10 毫秒
+sleep 0.01
+usleep 10000
+```
+
+## :point_right:crontab - 管理定时计划任务
+
+```bash
+# For details see man 4 crontabs
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# | .------------- hour (0 - 23)
+# | | .---------- day of month (1 - 31)
+# | | | .------- month (1 - 12) OR jan,feb,mar,apr ...
+# | | | | .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# | | | | |
+# * * * * * user-name command to be executed
+
+"*"代表所有的取值范围内的数字，如月份字段为*，则表示1到12个月；
+"/"代表每一定时间间隔的意思，如分钟字段为*/10，表示每10分钟执行1次。
+"-"代表从某个区间范围，是闭区间。如“2-5”表示“2,3,4,5”，小时字段中0-23/2表示在0~23点范围内每2个小时执行一次。
+","分散的数字（不一定连续），如1,2,3,4,7,9。
+
+## 常用options
+-e	编辑任务
+-l	列出任务
+-r	删除任务
+-u	指定用户名字
+
+## 例子
+3,15   *    *    *    *  command  # 每小时的第3和第15分钟执行command
+3,15  8-11  *  *  *  command # 8-10点，每小时的第3和第15分钟执行command
+*  */1  *  *  *  /etc/init.d/smb restart # 每小时重启一次
+```
+
+## at - 一次性定时计划任务
+
+```bash
+## 常用options
+atq	查看系统中的等待作业
+-d	删除系统中的等待作业(等效于atrm命令)
+```
+
+## batch - 指定时间执行任务
+
+## :point_right:alias - 设置命令别名
+
+```bash
+## 常用options
+-p	打印已经设置的命令别名
+
+## 例子
+alias ll=ls -lt
+alias -p
+```
+
+## :point_right:time - 指令执行时所消耗的时间
+
+```bash
+time command
+```
+
+## declare - 声明shell变量
+
+```bash
+## 常用options
+-a	声明数组变量
+-f	仅显示函数
+-F	不显示函数定义
+-i	先计算表达式，把结果赋给所声明变量
+-p	显示给定变量的定义的方法和值，当使用此选项时，其他的选项将被忽略
+-r	定义只读变量
+-x	将指定的Shell变量转换成环境变量
+
+## 例子
+declare -x file_name="test.txt"
+```
+
+## :point_right:export - 查看或设置环境变量
+
+推荐使用，内部会转成declare
+
+```bash
+-f	指定函数名称
+-n	删除指定的变量
+-p	列出所有的环境变量
+## 例子
+export file_name="test.txt"
+export |grep file_name
+```
+
+## :point_right:systemctl - 管理系统服务
+
+```bash
+##	常用options
+start	启动服务
+stop	停止服务
+restart	重启服务
+enable	使某服务开机自启
+disable	关闭某服务开机自启
+status	查看服务状态
+list -units --type=service	列举所有已启动服务
+
+## 例子
+systemctl start httpd
+```
+
+## :point_right:service - 管理系统服务
+
+```bash
+## 例子
+systemctl httpd [stop|start|restart|stauts]
+```
+
+## :point_right:clear - 清除屏幕
+
+原理是向后翻页
+
+## :point_right:dmesg - 显示开机信息
+
+排查系统开机问题的重要参数 /var/log/dmesg
+
+## :point_right:halt - 关闭当前服务器系统
+
+```bash
+## 常用options
+-w	模拟关机，把过程写入到日志文件
+-d	不写入日志纪录
+-f	强制关机或重启
+-i	关机或重启前关掉所有的网络服务
+```
+
+## shutdown - 关闭服务器的系统
+
+```bash
+-r	将系统重启
+-t	送出警告信息和删除信息之间要延迟多少秒
+```
+
+## :point_right:reboot - 重启系统
+
+## lsmod - 加载kernel模块管理
+
+lsmod命令的指定结果共有三列。
+Module：模块名。
+Size：模块大小。
+Used by：模块是否被其他模块调用。
+
+## :point_right:modprobe - kernel模块智能加载工具
+
+```bash
+## 常用options
+-a	加载命令行给出的全部的模块
+-c	显示所有模块的设置信息
+-d	使用排错模式
+-l	显示可用的模块
+-r	从内核中移除模块
+-t	指定模块类型
+-s	记录错误信息到系统日志中
+```
+
+## insmod - 用于载入kernel模块
+
+install mod
+
+```bash
+-f 　不检查目前kernel版本与模块编译时的kernel版本是否一致，强制将模块载入。
+-k 　将模块设置为自动卸除。
+-m 　输出模块的载入信息。
+-o<模块名称> 　指定模块的名称，可使用模块文件的文件名。
+-p 　测试模块是否能正确地载入kernel。
+-s 　将所有信息记录在系统记录文件中。
+-v 　执行时显示详细的信息。
+-x 　不要汇出模块的外部符号。
+-X 　汇出模块所有的外部符号，此为预设置
+```
+
+## rmmod - 用于删除kernel模块
+
+```bash
+rmmod [-as][模块名称...]
+```
+
+## modinfo - 显示kernel模块的信息
+
+```bash
+## 常用options
+-a	显示模块开发人员
+```
+
+## :point_right:sysctl - 配置内核参数
+
+配置内核参数，sysctl命令被用于在内核运行时动态地修改内核的运行参数，可用的内核参数在目录“/proc/sys”中。
+
+sysctl命令对内核参数的修改仅在当前生效，重启系统后参数丢失。如果希望参数永久生效可以修改配置文件“/etc/sysctl.conf”。
+
+~~~shell
+-n	打印值时不打印关键字
+-e	忽略未知关键字错误
+-N	仅打印名称
+-w	当改变sysctl设置时使用此项
+-p	从配置文件“/etc/sysctl.conf”加载内核参数设置
+-a	打印当前所有可用的内核参数变量和值
+-A	以表格方式打印当前所有可用的内核参数变量和值
+
+## 读取
+sysctl net.ipv6.neigh.lo.locktime
+net.ipv6.neigh.lo.locktime = 0
+
+## 修改
+sysctl net.ipv6.neigh.lo.locktime=1
+net.ipv6.neigh.lo.locktime = 1 
+~~~
+
+## :point_right:kdump - 系统崩溃时记录日志
 
 # 文件管理/目录管理
 
