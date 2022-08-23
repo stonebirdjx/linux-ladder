@@ -118,6 +118,7 @@
   - [:point_right:ss - 显示活动套接字信息](#point_rightss---%E6%98%BE%E7%A4%BA%E6%B4%BB%E5%8A%A8%E5%A5%97%E6%8E%A5%E5%AD%97%E4%BF%A1%E6%81%AF)
   - [:point_right:free - 显示系统内存使用量情况](#point_rightfree---%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E9%87%8F%E6%83%85%E5%86%B5)
   - [:point_right:lsof - 查看文件的进程信息](#point_rightlsof---%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF)
+  - [:point_right:nohup - 后端挂起运行程序](#point_rightnohup---%E5%90%8E%E7%AB%AF%E6%8C%82%E8%B5%B7%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F)
 - [文件系统和磁盘](#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%92%8C%E7%A3%81%E7%9B%98)
   - [:point_right:fsck/fsck.ext2/fsck.ext3/fsck.ext4/fsck.xfs - 检查与修复文件系统](#point_rightfsckfsckext2fsckext3fsckext4fsckxfs---%E6%A3%80%E6%9F%A5%E4%B8%8E%E4%BF%AE%E5%A4%8D%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)
   - [:point_right:mount - 把文件系统挂载到目录](#point_rightmount---%E6%8A%8A%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8C%82%E8%BD%BD%E5%88%B0%E7%9B%AE%E5%BD%95)
@@ -127,7 +128,25 @@
   - [parted - 磁盘分区工具](#parted---%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%B7%A5%E5%85%B7)
   - [:point_right:fdisk - 管理磁盘分区](#point_rightfdisk---%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA)
   - [:point_right:lsblk - 查看块设备](#point_rightlsblk---%E6%9F%A5%E7%9C%8B%E5%9D%97%E8%AE%BE%E5%A4%87)
-- [文件传输](#%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93)
+- [网络配置与文件传输](#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93)
+  - [:point_right:ping - 测试主机间网络连通性](#point_rightping---%E6%B5%8B%E8%AF%95%E4%B8%BB%E6%9C%BA%E9%97%B4%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7)
+  - [ping6 - 测试主机间IPv6网络连通性](#ping6---%E6%B5%8B%E8%AF%95%E4%B8%BB%E6%9C%BA%E9%97%B4ipv6%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7)
+  - [:point_right:ip - 显示与配置网卡参数](#point_rightip---%E6%98%BE%E7%A4%BA%E4%B8%8E%E9%85%8D%E7%BD%AE%E7%BD%91%E5%8D%A1%E5%8F%82%E6%95%B0)
+  - [:point_right:route - 显示与设置路由信息](#point_rightroute---%E6%98%BE%E7%A4%BA%E4%B8%8E%E8%AE%BE%E7%BD%AE%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF)
+  - [ifup - 激活网络接口](#ifup---%E6%BF%80%E6%B4%BB%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3)
+  - [ifdown - 关闭网络接口](#ifdown---%E5%85%B3%E9%97%AD%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3)
+  - [:point_right:ifconfig - 显示或设置网络设备参数信息](#point_rightifconfig---%E6%98%BE%E7%A4%BA%E6%88%96%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%8F%82%E6%95%B0%E4%BF%A1%E6%81%AF)
+  - [:point_right:telnet - 控制远程设备](#point_righttelnet---%E6%8E%A7%E5%88%B6%E8%BF%9C%E7%A8%8B%E8%AE%BE%E5%A4%87)
+  - [:point_right:curl - 文件传输工具](#point_rightcurl---%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7)
+  - [wget - 下载网络文件](#wget---%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%BB%9C%E6%96%87%E4%BB%B6)
+  - [host - 域名查询](#host---%E5%9F%9F%E5%90%8D%E6%9F%A5%E8%AF%A2)
+  - [:point_right:dig - 查询域名DNS信息](#point_rightdig---%E6%9F%A5%E8%AF%A2%E5%9F%9F%E5%90%8Ddns%E4%BF%A1%E6%81%AF)
+  - [:point_right:nslookup - 域名查询](#point_rightnslookup---%E5%9F%9F%E5%90%8D%E6%9F%A5%E8%AF%A2)
+  - [:point_right:tcpdump - 抓包，监听网络流量](#point_righttcpdump---%E6%8A%93%E5%8C%85%E7%9B%91%E5%90%AC%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F)
+  - [:point_right:firewalld](#point_rightfirewalld)
+  - [:point_right:iptables](#point_rightiptables)
+  - [:point_right:sz - 从Linux上下载文件到本地](#point_rightsz---%E4%BB%8Elinux%E4%B8%8A%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%AC%E5%9C%B0)
+  - [:point_right:rz - 上传文件到linux](#point_rightrz---%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0linux)
   - [:point_right:ftp - ftp协议文件传送](#point_rightftp---ftp%E5%8D%8F%E8%AE%AE%E6%96%87%E4%BB%B6%E4%BC%A0%E9%80%81)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -1433,6 +1452,12 @@ free -m
 lsof -a
 ```
 
+## :point_right:nohup - 后端挂起运行程序
+
+~~~shell
+nohup command > linuxcool.com 2>&1 
+~~~
+
 # 文件系统和磁盘
 
 1、XFS是一个具有非常高性能且可扩展的文件系统，同时在大多数要求的应用程序中都会进行常规部署。XFS提供了一种健壮的、优秀的以及功能丰富的文件系统，它具有的可伸缩性能够满足最苛刻的存储需求。
@@ -1549,7 +1574,185 @@ x ：扩展应用，高级功能
 
 
 
-# 文件传输
+# 网络配置与文件传输
+
+## :point_right:ping - 测试主机间网络连通性
+
+```bash
+## 常用options
+-d	使用Socket的SO_DEBUG功能
+-c	指定发送报文的次数
+-i	指定收发信息的间隔时间
+-I	使用指定的网络接口送出数据包
+-l	设置在送出要求信息之前，先行发出的数据包
+-n	只输出数值
+-p	设置填满数据包的范本样式
+-q	不显示指令执行过程
+-R	记录路由过程
+-s	设置数据包的大小
+
+ping -c 4 -i 3 www.linuxcool.com
+ping6 2408:877e:31::7
+
+ping -6 # windows
+```
+
+## ping6 - 测试主机间IPv6网络连通性
+
+## :point_right:ip - 显示与配置网卡参数
+
+```bash
+ip addr
+```
+
+## :point_right:route - 显示与设置路由信息
+
+```bash
+## 常用options
+-n	直接显示数字形式的ip地址
+-e	netstat格式显示路由表
+-net	到一个网络的路由表
+-host	到一个主机的路由表
+add	增加指定的路由记录
+del	删除指定的路由记录
+gw	设置默认网关
+dev	路由记录所表示的网络接口
+
+## 例子
+route -n
+route add -net 192.168.10.0 netmask 255.255.255.0 dev ens160
+```
+
+## ifup - 激活网络接口
+
+```bash
+ifup eth0
+```
+
+## ifdown - 关闭网络接口
+
+```bash
+ifdown eth0
+```
+
+## :point_right:ifconfig - 显示或设置网络设备参数信息
+
+```bash
+## 常用options
+add<地址>	设置网络设备IPv6的IP地址
+del<地址>	删除网络设备IPv6的IP地址
+down	关闭指定的网络设备
+up	启动指定的网络设备
+IP地址	指定网络设备的IP地址
+
+## 例子
+ifconfig ens160 down
+ifconfig ens160 up
+ifconfig ens160 192.168.10.20 netmask 255.255.255.0
+```
+
+## :point_right:telnet - 控制远程设备
+
+```bash
+telnet ip [port]
+```
+
+## :point_right:curl - 文件传输工具
+```bash
+## 常用options
+-o	指定新的本地文件名
+-O	保留远程文件的原始名
+-u	通过服务端配置的用户名和密码授权访问
+-I	HEAD请求
+-i  额外打印请求头
+-L  追踪http重定向
+-u	指定登录账户密码信息
+-s	静默模式，不输出任何信息
+-T	上传文件
+
+## 例子
+curl -iL "https://www.hjxstbserver.xyz"
+```
+
+## wget - 下载网络文件
+
+```bash
+## 常用options
+-O	定义本地文件名
+
+## 例子
+curl -iL "https://www.hjxstbserver.xyz/download/test.sh"
+```
+
+## host - 域名查询
+
+```bash
+host linuxcool.com #查询域名对应的ip
+```
+
+## :point_right:dig - 查询域名DNS信息
+
+~~~shell
+## 常用options
+@	指定进行域名解析的域名服务器
+-b	使用指定的本机ip地址向域名服务器发送域名查询请求
+-f	指定dig以批处理的方式运行，指定的文件中保存着需要批处理查询的DNS任务信息
+-p	指定域名服务器所使用端口号
+-t	指定要查询的DNS数据类型(默认为A)
+-x	执行逆向域名查询
+-4	使用ipv4（默认）
+-6	使用ipv6
+
+dig www.linuxcool.com
+~~~
+
+## :point_right:nslookup - 域名查询
+
+~~~shell
+## 常用options
+-sil	不显示任何警告信息
+exit	退出命令
+server	指定解析域名的服务器地址
+set type=soa	设置查询域名授权起始信息
+set type=a	设置查询域名A记录
+set type=mx	设置查询域名邮件交换记录
+
+nslookup linuxcool.com
+~~~
+
+## :point_right:tcpdump - 抓包，监听网络流量
+
+notebook单独记录
+
+## :point_right:firewalld
+notebook单独记录
+
+## :point_right:iptables
+
+notebook单独记录
+
+## :point_right:sz - 从Linux上下载文件到本地
+
+```bash
+-a	以文本方式传输（ascii）
+-b	以二进制方式传输（binary）
+-e	对控制字符转义（escape），这可以保证文件传输正确
+-i	后接命令，在接收端执行命令
+
+# mobaxterm
+sz  filename
+ctrl + 鼠标右键
+Receive file using Z-modem
+```
+
+## :point_right:rz - 上传文件到linux
+
+```bash
+rz
+ctrl + 鼠标右键
+Send file using Z-modem
+选择上传文件
+```
 
 ## :point_right:ftp - ftp协议文件传送
 

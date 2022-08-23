@@ -9,12 +9,15 @@
   - [文件基本属性（一天）](#%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7%E4%B8%80%E5%A4%A9)
   - [文件和目录操作（五天）](#%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E4%BA%94%E5%A4%A9)
   - [监控和管理 Linux 进程（一天）](#%E7%9B%91%E6%8E%A7%E5%92%8C%E7%AE%A1%E7%90%86-linux-%E8%BF%9B%E7%A8%8B%E4%B8%80%E5%A4%A9)
-  - [文件系统和磁盘管理（一天）](#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%92%8C%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E4%B8%80%E5%A4%A9)
+  - [文件系统和磁盘管理（两天）](#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%92%8C%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E4%B8%A4%E5%A4%A9)
   - [系统管理（三天）](#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E4%B8%89%E5%A4%A9)
-  - [网络设置与相关](#%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE%E4%B8%8E%E7%9B%B8%E5%85%B3)
-  - [其他命令](#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4)
+  - [网络设置与传输访问（两天）](#%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE%E4%B8%8E%E4%BC%A0%E8%BE%93%E8%AE%BF%E9%97%AE%E4%B8%A4%E5%A4%A9)
+- [shell:第一门编程语言（七天）](#shell%E7%AC%AC%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%83%E5%A4%A9)
+  - [解释型语言](#%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80)
+  - [shell种类](#shell%E7%A7%8D%E7%B1%BB)
+  - [shell 变量](#shell-%E5%8F%98%E9%87%8F)
+- [后面的话](#%E5%90%8E%E9%9D%A2%E7%9A%84%E8%AF%9D)
   - [容器](#%E5%AE%B9%E5%99%A8)
-- [:point_right:shell:第一门编程语言](#point_rightshell%E7%AC%AC%E4%B8%80%E9%97%A8%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80)
 - [参考资料](#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -211,11 +214,12 @@ netstat # 显示网络状态
 ss      # 显示活动套接字信息
 free	# 显示系统内存使用量情况
 lsof	# 查看文件的进程信息
+nohup   # 程序放后台运行
 ```
 
 :point_right:目标：能查看对应进程、对应进程消耗、磁盘io、网络端口、内存、cpu使用率。
 
-## 文件系统和磁盘管理（一天）
+## 文件系统和磁盘管理（两天）
 
 此时已经能基本熟练使用linux，能完成60%的运维工作，存储也是很重要的组成部分，需要对磁盘和文件系统有一定了解。
 
@@ -302,27 +306,105 @@ modinfo			# 显示kernel模块的信息
 
 :point_right:目标：能判断角色，查看系统日志，知道定时任务、环境变量，内核模块管理，关机等操作即可。
 
-## 网络设置与相关
+## 网络设置与传输访问（两天）
 
+程序的交互离不开网络，加油，快翻越第一座山了。
 
+相关命令
 
-## 其他命令
-
+```bash
+ping/ping6  # 测试主机间网络连通性
+ip			# 显示与配置网卡参数
+route		# 显示与设置路由信息
+ifup		# 激活网络接口
+ifdown		# 关闭网络接口
+ifconfig	# 显示或设置网络设备参数信息
+ftp			# 与ftp服务器交互
+telnet		# 控制远程设备
+curl		# 文件传输工具
+wget		# 下载网络文件
+host		# 域名查询
+dig			# 域名查询
+nslookup	# 域名查询
+tcpdump		# 抓包，监听网络流量
+firewalld	# 防火墙查看与配置
+iptables	# 防火墙查看与配置
+sz			# 从Linux下载文件到本地
+rz			# 本地文件上传至linux
 ```
+
+:point_right:目标：能正常配置ip，路由。防火墙基本配置，了解抓包。了解常见的常见的应用层协议ftp、http等，配合着更进一步学习监控知识
+
+# shell:第一门编程语言（七天）
+
+虽然至此我们能完全熟练运用linux，能完成100%的运维工作。很多时候我们需要让机器去自动完成我们的动作，比起程序启停、定时任务、日志轮转，备份、上传等等操作，这时shell无疑是最方便、简洁的一门语言。
+
+> 强烈建议学习shell作为第一门编程语言，不仅可以轻松完成运维工作，而且对后面的学习高级语言（golang，python或其他语言）会很有帮助
+
+## 解释型语言
+
+shell 脚本的后缀名是.sh
+
+> **#!** 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行
+
+```bash
+#!/bin/bash  # 对于使用bash解释器
+#!/bin/sh	#  对应使用sh解释器 ，同理python,perl等解释型语言改成对应的解释器即可。
+
+# 有解释器路径赋予执行权限后系统会自动执行
+chmod +x test.sh
+./test.sh
+
+# 没有解释器，可以手动带解释器执行，否则系统会当做默认的shell作为解释器（尽管你文本文件可能不是shell脚本）
+bash test.sh
+```
+
+## shell种类
+
+ `cat /etc/shells`查看当前环境可以使用的shell
+
+```bash
+echo "$SHELL" # 查看当前登录系统shell
+
+# 使用chsh 更改shell
+chsh -s /bin/bash # 更改当初shell为bash
+```
+
+> 建议使用bash作为默认shell。
+
+## shell 变量
+
+定义变量`=`两边不能有空格，主要定义规范使用单词数字下划线（lower_with_under）的形式
+
+```bash
+file_name="stdout.log"
+
+# 取值
+$file_name # 不建议使用
+${file_name} # 建议使用
+```
+
+> shell变量类型都是字符串
+>
+> shell只有全局变量，注意值的可靠性，不要到了取被更改的值
+>
+> 取值为了防止边界问题建议统一使用${var}的格式
+
+shell中常用命令
+
+```bash
+chsh
 echo
 printf
 xargs
 bc
-nohup
 ```
 
+:point_right:目标：理解shell，有正常的思想，能编写脚本实现自动化运维
+
+# 后面的话
+
 ## 容器
-
-
-
-
-
-# :point_right:shell:第一门编程语言
 
 
 
