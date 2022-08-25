@@ -11,6 +11,7 @@
   - [:point_right:userdel - 删除用户](#point_rightuserdel---%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7)
   - [:point_right:passwd - 修改用户密码](#point_rightpasswd---%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81)
   - [:point_right:su - 切换用户](#point_rightsu---%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7)
+  - [sudo - 以系统管理者的身份执行指令](#sudo---%E4%BB%A5%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E8%BA%AB%E4%BB%BD%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A4)
   - [chpasswd - 修改当前用户](#chpasswd---%E4%BF%AE%E6%94%B9%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7)
   - [:point_right:date - 显示或设置系统日期与时间](#point_rightdate---%E6%98%BE%E7%A4%BA%E6%88%96%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E6%97%A5%E6%9C%9F%E4%B8%8E%E6%97%B6%E9%97%B4)
   - [finger - 查询其他使用者的资料](#finger---%E6%9F%A5%E8%AF%A2%E5%85%B6%E4%BB%96%E4%BD%BF%E7%94%A8%E8%80%85%E7%9A%84%E8%B5%84%E6%96%99)
@@ -38,6 +39,10 @@
   - [modinfo - 显示kernel模块的信息](#modinfo---%E6%98%BE%E7%A4%BAkernel%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BF%A1%E6%81%AF)
   - [:point_right:sysctl - 配置内核参数](#point_rightsysctl---%E9%85%8D%E7%BD%AE%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0)
   - [:point_right:kdump - 系统崩溃时记录日志](#point_rightkdump---%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83%E6%97%B6%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97)
+  - [lsscsi - 列出SCSI设备及属性](#lsscsi---%E5%88%97%E5%87%BAscsi%E8%AE%BE%E5%A4%87%E5%8F%8A%E5%B1%9E%E6%80%A7)
+  - [lscpu - 列出cpu信息](#lscpu---%E5%88%97%E5%87%BAcpu%E4%BF%A1%E6%81%AF)
+  - [wall - 给所有打开的终端发送email](#wall---%E7%BB%99%E6%89%80%E6%9C%89%E6%89%93%E5%BC%80%E7%9A%84%E7%BB%88%E7%AB%AF%E5%8F%91%E9%80%81email)
+  - [jobs - 显示shell的作业信息](#jobs---%E6%98%BE%E7%A4%BAshell%E7%9A%84%E4%BD%9C%E4%B8%9A%E4%BF%A1%E6%81%AF)
 - [文件管理/目录管理](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86)
   - [:point_right:chown - 更改文件用户、属组](#point_rightchown---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E5%B1%9E%E7%BB%84)
   - [:point_right:chmod - 更改文件权限](#point_rightchmod---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90)
@@ -97,8 +102,6 @@
   - [tmpwatch - 删除暂存文件](#tmpwatch---%E5%88%A0%E9%99%A4%E6%9A%82%E5%AD%98%E6%96%87%E4%BB%B6)
   - [comm - 命令用于比较两个已排过序的文件](#comm---%E5%91%BD%E4%BB%A4%E7%94%A8%E4%BA%8E%E6%AF%94%E8%BE%83%E4%B8%A4%E4%B8%AA%E5%B7%B2%E6%8E%92%E8%BF%87%E5%BA%8F%E7%9A%84%E6%96%87%E4%BB%B6)
   - [:point_right:tr - 字符转换](#point_righttr---%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2)
-  - [:point_right:expr - 算术表达式](#point_rightexpr---%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F)
-  - [:point_right:let - 算术表达式](#point_rightlet---%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F)
   - [:point_right:wc -  统计文件的字节数、单词数、行数](#point_rightwc----%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%97%E8%8A%82%E6%95%B0%E5%8D%95%E8%AF%8D%E6%95%B0%E8%A1%8C%E6%95%B0)
   - [zcat/zgrep - 过滤压缩包里面的内容](#zcatzgrep---%E8%BF%87%E6%BB%A4%E5%8E%8B%E7%BC%A9%E5%8C%85%E9%87%8C%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9)
   - [tac - 反向打印文本](#tac---%E5%8F%8D%E5%90%91%E6%89%93%E5%8D%B0%E6%96%87%E6%9C%AC)
@@ -143,11 +146,25 @@
   - [:point_right:dig - 查询域名DNS信息](#point_rightdig---%E6%9F%A5%E8%AF%A2%E5%9F%9F%E5%90%8Ddns%E4%BF%A1%E6%81%AF)
   - [:point_right:nslookup - 域名查询](#point_rightnslookup---%E5%9F%9F%E5%90%8D%E6%9F%A5%E8%AF%A2)
   - [:point_right:tcpdump - 抓包，监听网络流量](#point_righttcpdump---%E6%8A%93%E5%8C%85%E7%9B%91%E5%90%AC%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F)
-  - [:point_right:firewalld](#point_rightfirewalld)
-  - [:point_right:iptables](#point_rightiptables)
+  - [:point_right:firewalld - 防火墙](#point_rightfirewalld---%E9%98%B2%E7%81%AB%E5%A2%99)
+  - [:point_right:iptables - 防火墙](#point_rightiptables---%E9%98%B2%E7%81%AB%E5%A2%99)
   - [:point_right:sz - 从Linux上下载文件到本地](#point_rightsz---%E4%BB%8Elinux%E4%B8%8A%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%AC%E5%9C%B0)
   - [:point_right:rz - 上传文件到linux](#point_rightrz---%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%88%B0linux)
   - [:point_right:ftp - ftp协议文件传送](#point_rightftp---ftp%E5%8D%8F%E8%AE%AE%E6%96%87%E4%BB%B6%E4%BC%A0%E9%80%81)
+- [shell 其他常用](#shell-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8)
+  - [:point_right:chsh - 改变系统shell](#point_rightchsh---%E6%94%B9%E5%8F%98%E7%B3%BB%E7%BB%9Fshell)
+  - [:point_right:echo - 打印到终端](#point_rightecho---%E6%89%93%E5%8D%B0%E5%88%B0%E7%BB%88%E7%AB%AF)
+  - [:point_right:readonly - 只读变量](#point_rightreadonly---%E5%8F%AA%E8%AF%BB%E5%8F%98%E9%87%8F)
+  - [:point_right:expr - 算术表达式](#point_rightexpr---%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F)
+  - [:point_right:let - 算术表达式](#point_rightlet---%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F)
+  - [:point_right:read - 读取输入](#point_rightread---%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5)
+  - [test - 检查条件是否成立](#test---%E6%A3%80%E6%9F%A5%E6%9D%A1%E4%BB%B6%E6%98%AF%E5%90%A6%E6%88%90%E7%AB%8B)
+  - [:point_right:set - 设置shell](#point_rightset---%E8%AE%BE%E7%BD%AEshell)
+  - [:point_right:unset - 删除指定的shell变量或函数](#point_rightunset---%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9A%84shell%E5%8F%98%E9%87%8F%E6%88%96%E5%87%BD%E6%95%B0)
+  - [:point_right:printf - 格式化打印](#point_rightprintf---%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%89%93%E5%8D%B0)
+  - [:point_right:xargs - 参数传递过滤器](#point_rightxargs---%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E8%BF%87%E6%BB%A4%E5%99%A8)
+  - [:point_right:bc - 浮点数计算](#point_rightbc---%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AE%A1%E7%AE%97)
+  - [:point_right:seq - 打印数字序列](#point_rightseq---%E6%89%93%E5%8D%B0%E6%95%B0%E5%AD%97%E5%BA%8F%E5%88%97)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -226,6 +243,8 @@ echo "123456"|passwd --stdin stonebird
 # options
 -c	执行完指定的指令后，即恢复原来的身份
 ```
+
+## sudo - 以系统管理者的身份执行指令
 
 ## chpasswd - 修改当前用户
 
@@ -484,6 +503,32 @@ net.ipv6.neigh.lo.locktime = 1
 ~~~
 
 ## :point_right:kdump - 系统崩溃时记录日志
+
+## lsscsi - 列出SCSI设备及属性
+
+列出SCSI设备及属性 ，了解即可
+
+## lscpu - 列出cpu信息
+
+显示CPU架构的有关信息，了解即可
+
+## wall - 给所有打开的终端发送email
+
+输出信息 wall命令用于向系统当前所有打开的终端上输出信息
+
+```shell
+wall this is a test line
+```
+
+## jobs - 显示shell的作业信息
+
+~~~shell
+-l	显示作业列表时包括进程号
+-n	显示上次使用jobs后状态发生变化的作业
+-p	显示作业列表时仅显示其对应的进程号
+-r	仅显示运行的（running）作业
+-s	仅显示暂停的（stopped）作业
+~~~
 
 # 文件管理/目录管理
 
@@ -1177,34 +1222,6 @@ tmpwatch 24 /tmp/  #删除tmp目录24小时未使用的文件
 echo "HELLO WORLD" | tr 'A-Z' 'a-z'
 ```
 
-## :point_right:expr - 算术表达式
-
-```bash
-## 例子
-match	中匹配 REGEXP 字符串并返回匹配字符串的长度
-substr	从 POS 位置获取长度为 LENGTH 的字符串
-index	杳找子字符串的起始位置
-length	计算字符串的长度
-
-expr match "123 456 789" ".*5"  # 6 匹配字符串的长度，若找不到则返回 0
-expr substr " this is a test" 3 5 # his i 
-expr index "test for the game" "e" # 2 
-expr length "this is a test" # 14
-expr 10 + 10
-expr 10 - 10
-expr 20 / 10
-expr 10 \* 10 # * 需要转义
-expr \( 10 + 10 \) \* 2 + 100
-```
-
-## :point_right:let - 算术表达式
-
-```bash
-## 例子
-a=1
-let a++ # a=`expr $a + 1`
-```
-
 ## :point_right:wc -  统计文件的字节数、单词数、行数
 
 ```bash
@@ -1724,10 +1741,10 @@ nslookup linuxcool.com
 
 notebook单独记录
 
-## :point_right:firewalld
+## :point_right:firewalld - 防火墙
 notebook单独记录
 
-## :point_right:iptables
+## :point_right:iptables - 防火墙
 
 notebook单独记录
 
@@ -1791,6 +1808,215 @@ FTP>system: 显示远端主机系统类型.
 FTP>user user-name [password] [account] 重新以别的用户名登录远端主机.
 FTP>? [command]: 同HELP. [command]指定需要帮助的命令名称。如果没有指定 command，ftp 将显示全部命令的列表。
 FTP>! 从 ftp 子系统退出到外壳。
+```
+
+# shell 其他常用
+
+## :point_right:chsh - 改变系统shell
+
+/etc/shells 文件记录当前用户安装了那些shell，可以使用 `chsh -l` 和 `cat /etc/shells`查看当前环境可以使用的shell
+
+```bash
+chsh -s /bin/bash
+```
+
+## :point_right:echo - 打印到终端
+
+```bash
+## 常用options
+-e 支持转义
+-e "\n"	换行，光标移至行首
+-e "\r"	光标移至行首，但不换行
+```
+
+## :point_right:readonly - 只读变量
+
+```bash
+readonly name
+```
+
+## :point_right:expr - 算术表达式
+
+```bash
+## 例子
+match	中匹配 REGEXP 字符串并返回匹配字符串的长度
+substr	从 POS 位置获取长度为 LENGTH 的字符串
+index	杳找子字符串的起始位置
+length	计算字符串的长度
+
+expr match "123 456 789" ".*5"  # 6 匹配字符串的长度，若找不到则返回 0
+expr substr " this is a test" 3 5 # his i 
+expr index "test for the game" "e" # 2 
+expr length "this is a test" # 14
+expr 10 + 10
+expr 10 - 10
+expr 20 / 10
+expr 10 \* 10 # * 需要转义
+expr \( 10 + 10 \) \* 2 + 100
+```
+
+## :point_right:let - 算术表达式
+
+```bash
+## 例子
+a=1
+let a++ # a=`expr $a + 1`
+```
+
+## :point_right:read - 读取输入
+
+读取从键盘或文件输入的数据，常用参数
+
+```shell
+-a array 将读取的单词分配给数组的顺序索引变量 ARRAY，从零开始
+-d delim 继续直到读到 DELIM 的第一个字符，而不是比换行符
+-e 使用 Readline 获取交互式 shell 中的行
+-p prompt 输出之前没有尾随换行符的字符串 PROMPT 尝试阅读
+-r 不允许反斜杠转义任何字符
+-s 不回显来自终端的输入
+-t timeout 超时并返回失败
+-u 从文件描述符 FD 读取而不是标准输入
+```
+
+读取用户输入
+
+```shell
+#!/bin/bash
+echo -n "please input your name:"
+read name
+echo "welcome !!! $name"
+exit 0
+```
+
+读取密码 `-s 不回显`
+
+```shell
+#!/bin/bash
+read -s -p "please input your code:" password
+echo "hehe, your password is $password"
+```
+
+读取文件 `-u` 
+
+~~~shell
+#! /bin/bash
+exec 3< test.txt
+
+while read -u 3 var
+do
+    echo "$var"
+done
+echo "finished"
+ 
+exec 3<&-
+# 通过“exec 3<test.txt”生成了编号为 3 的文件描述符，接着通过“read-u 3 var”来读取文件内容。最后通过“exec 3<&-”关闭了 3 号文件描述符。
+~~~
+
+读取文件管道
+
+```shell
+#!/bin/bash
+count=1
+cat test.txt | while read line
+do
+echo "Line $count:$line"
+let count=$count+1
+done
+echo "finished"
+echo "Line no is $count"
+exit 0
+```
+
+读取文件重定向 `个人比较常用`
+
+```shell
+#!/bin/bash
+count=0
+while read line
+do
+let count=$count+1
+echo "Line $count:$line"
+done < test.txt
+echo "finished"
+echo "Line no is $count"
+exit 0
+```
+
+## test - 检查条件是否成立
+
+```bash
+#test命令检测条件是否成立
+if test $a = $b ;then
+	Command
+fi
+$[a+b]=expr $a + $b
+```
+
+## :point_right:set - 设置shell
+
+```bash
+## 常用options
+ -a：标示已修改的变量，以供输出至环境变量。 
+ -d：Shell预设会用杂凑表记忆使用过的指令，以加速指令的执行。使用-d参数可取消。 
+ -e：若指令传回值不等于0，则立即退出shell。 
+ -u：当执行时使用到未定义过的变量，则显示错误信息。 
+ -x：执行指令后，会先显示该指令及所下的参数。
+ -p：启动优先顺序模式。
+
+## 例子
+set -en
+```
+
+## :point_right:unset - 删除指定的shell变量或函数
+
+```shell
+-f	仅删除函数
+-v	仅删除变量
+
+unset -v hjx
+```
+
+## :point_right:printf - 格式化打印
+
+```bash
+printf "%-5s %-10s %-4s\n" NO Name Mark
+printf "%-5s %-10s %-4.2f\n" 01 Tom 90.3456
+printf "%-5s %-10s %-4.2f\n" 02 Jack 89.2345
+printf "%-5s %-10s %-4.2f\n" 03 Jeff 98.4323
+```
+
+## :point_right:xargs - 参数传递过滤器
+
+配合着管道使用
+
+常用参数
+
+~~~shell
+-n	多行输出
+-d	自定义一个定界符
+-I	指定一个替换字符串{}
+-t	打印出 xargs 执行的命令
+-p	执行每一个命令时弹出确认
+
+cat test.txt | xargs -n3
+cat arg.txt | xargs -I {} ./sk.sh -p {} -l
+~~~
+
+## :point_right:bc - 浮点数计算
+
+```bash
+echo "1.212*3" | bc 
+```
+
+## :point_right:seq - 打印数字序列
+
+```bash
+-f	格式
+-s	字符串
+-w	在列前添加0 使得宽度相同
+
+## 例子
+seq 1 5
 ```
 
 
