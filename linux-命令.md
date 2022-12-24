@@ -131,6 +131,7 @@
   - [parted - 磁盘分区工具](#parted---%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%B7%A5%E5%85%B7)
   - [:point_right:fdisk - 管理磁盘分区](#point_rightfdisk---%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA)
   - [:point_right:lsblk - 查看块设备](#point_rightlsblk---%E6%9F%A5%E7%9C%8B%E5%9D%97%E8%AE%BE%E5%A4%87)
+  - [:point_right:fio - 测试磁盘性能](#point_rightfio---%E6%B5%8B%E8%AF%95%E7%A3%81%E7%9B%98%E6%80%A7%E8%83%BD)
 - [网络配置与文件传输](#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93)
   - [:point_right:ping - 测试主机间网络连通性](#point_rightping---%E6%B5%8B%E8%AF%95%E4%B8%BB%E6%9C%BA%E9%97%B4%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7)
   - [ping6 - 测试主机间IPv6网络连通性](#ping6---%E6%B5%8B%E8%AF%95%E4%B8%BB%E6%9C%BA%E9%97%B4ipv6%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7)
@@ -1589,7 +1590,11 @@ x ：扩展应用，高级功能
 -t	显示拓扑结构信息
 ```
 
+## :point_right:fio - 测试磁盘性能
 
+```bash
+fio --name=/dev/sdX --ioengine=libaio --direct=1 --fsync=1 --readwrite=randwrite --blocksize=4k --runtime=300
+```
 
 # 网络配置与文件传输
 
