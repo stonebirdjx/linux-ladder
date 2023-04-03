@@ -43,6 +43,9 @@
   - [lscpu - 列出cpu信息](#lscpu---%E5%88%97%E5%87%BAcpu%E4%BF%A1%E6%81%AF)
   - [wall - 给所有打开的终端发送email](#wall---%E7%BB%99%E6%89%80%E6%9C%89%E6%89%93%E5%BC%80%E7%9A%84%E7%BB%88%E7%AB%AF%E5%8F%91%E9%80%81email)
   - [jobs - 显示shell的作业信息](#jobs---%E6%98%BE%E7%A4%BAshell%E7%9A%84%E4%BD%9C%E4%B8%9A%E4%BF%A1%E6%81%AF)
+  - [:point_right:chronyc - 同步时间](#point_rightchronyc---%E5%90%8C%E6%AD%A5%E6%97%B6%E9%97%B4)
+  - [:point_right:timedatectl - 查看日期时间、时区及 NTP 状态](#point_righttimedatectl---%E6%9F%A5%E7%9C%8B%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%97%B6%E5%8C%BA%E5%8F%8A-ntp-%E7%8A%B6%E6%80%81)
+  - [:point_right: journalctl - 查看系统日志](#point_right-journalctl---%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97)
 - [文件管理/目录管理](#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86)
   - [:point_right:chown - 更改文件用户、属组](#point_rightchown---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E7%94%A8%E6%88%B7%E5%B1%9E%E7%BB%84)
   - [:point_right:chmod - 更改文件权限](#point_rightchmod---%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90)
@@ -390,6 +393,7 @@ restart	重启服务
 enable	使某服务开机自启
 disable	关闭某服务开机自启
 status	查看服务状态
+cat     查看服务配置
 list -units --type=service	列举所有已启动服务
 
 ## 例子
@@ -530,6 +534,124 @@ wall this is a test line
 -r	仅显示运行的（running）作业
 -s	仅显示暂停的（stopped）作业
 ~~~
+
+## :point_right:chronyc - 同步时间
+
+配置文件 `/etc/chrony.conf`，是ntp命令的替代品
+
+```bash
+# 安装
+yum -y install chrony
+systemctl enable chronyd
+systemctl start chronyd
+
+# 查看时间同步状态
+timedatectl status
+# 开启网络时间同步
+timedatectl set-ntp true
+
+# 查看 ntp_servers
+chronyc sources -v
+
+# 查看 ntp_servers 是否存活
+chronyc activity -v
+
+chronyc sourcestats -v
+# 强制同步时间
+chronyc -a makestep
+```
+
+## :point_right:timedatectl - 查看日期时间、时区及 NTP 状态
+
+```bash
+# 列出时区
+timedatectl list-timezones
+
+# 修改时区
+timedatectl set-timezone Asia/Shanghai
+
+# 修改时间
+timedatectl set-time "2021-04-15 15:50:20"
+
+# 开启ntp 
+timedatectl set-ntp true/flase
+```
+
+## :point_right: journalctl - 查看系统日志
+
+/var/log/message , /var/log/dmesg
+
+检索 systemd 日志，是 CentOS 7 才有的工具。
+
+```bash
+Flags:
+ --system               # 显示系统日志
+ --user                 # 显示当前用户的用户日志
+-M --machine=CONTAINER  # 在本地容器上操作
+-S --since=DATE         # 显示不早于指定日期的条目
+-U --until=DATE         # 显示不晚于指定日期的条目
+-c --cursor=CURSOR      # 显示从指定光标开始的条目
+  --after-cursor=CURSOR # 在指定光标后显示条目
+  --show-cursor         # 在所有条目之后打印光标
+-b --boot[=ID]          # 显示当前启动或指定启动
+  --list-boots          # 显示有关已记录引导的简洁信息
+-k --dmesg              # 显示当前启动的内核消息日志
+-u --unit=UNIT          # 显示指定单元的日志
+-t --identifier=STRING  # 显示具有指定系统日志标识符的条目
+-p --priority=RANGE     # 显示具有指定优先级的条目
+-e --pager-end          # 在pager中立即跳转到末尾
+-f --follow             # 关注期刊
+-n --lines[=INTEGER]    # 要显示的日志条目数
+  --no-tail             # 显示所有行，即使在跟随模式下
+-r --reverse            # 首先显示最新的条目
+-o --output=STRING      # 更改日志输出模式 (short, short-iso,
+                                   short-precise, short-monotonic, verbose,
+                                   export, json, json-pretty, json-sse, cat)
+--utc                   # 以协调世界时 (UTC) 表示的时间
+-x --catalog            # 在可用的情况下添加消息说明
+   --no-full            # Ellipsize 字段
+-a --all                # 显示所有字段，包括长的和不可打印的
+-q --quiet              # 不显示特权警告
+   --no-pager           # 不要将输出通过管道传输到寻呼机
+-m --merge              # 显示所有可用期刊的条目
+-D --directory=PATH     # 显示目录中的日志文件
+   --file=PATH          # 显示日志文件
+   --root=ROOT          # 对根目录下的目录文件进行操作
+   --interval=TIME      # 更改 FSS 密封键的时间间隔
+   --verify-key=KEY     # 指定FSS验证密钥
+   --force              # 使用 --setup-keys 覆盖 FSS 密钥对 
+
+Commands:
+-h --help              # 显示此帮助文本
+   --version           # 显示包版本
+-F --field=FIELD       # 列出指定字段的所有值
+   --new-id128         # 生成新的 128 位 ID
+   --disk-usage        # 显示所有日志文件的总磁盘使用情况
+   --vacuum-size=BYTES # 将磁盘使用量减少到指定大小以下
+   --vacuum-time=TIME  # 删除早于指定日期的日志文件
+   --flush             # 将所有日志数据从 /run 刷新到 /var
+   --header            # 显示期刊头信息
+   --list-catalog      # 显示目录中的所有消息 ID
+   --dump-catalog      # 在消息目录中显示条目
+   --update-catalog    # 更新消息目录数据库
+   --setup-keys        # 生成新的 FSS 密钥对
+   --verify            # 验证日志文件的一致性
+   
+
+# 例子
+journalctl -u etcd
+
+journalctl -k 
+
+# 显示本次启动后的所有日志：
+journalctl -b
+journalctl -b -0 # 显示本次启动的信息
+journalctl -b -1 # 显示上次启动的信息
+journalctl -b -2 #  显示上上次启动的信息 `journalctl -b -2`
+
+journalctl --since="2012-10-30 18:17:16"
+journalctl --since "20 min ago"
+```
 
 # 文件管理/目录管理
 
