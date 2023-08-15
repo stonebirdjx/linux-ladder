@@ -144,6 +144,7 @@
   - [ifdown - 关闭网络接口](#ifdown---%E5%85%B3%E9%97%AD%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%8F%A3)
   - [:point_right:ifconfig - 显示或设置网络设备参数信息](#point_rightifconfig---%E6%98%BE%E7%A4%BA%E6%88%96%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%8F%82%E6%95%B0%E4%BF%A1%E6%81%AF)
   - [:point_right:telnet - 控制远程设备](#point_righttelnet---%E6%8E%A7%E5%88%B6%E8%BF%9C%E7%A8%8B%E8%AE%BE%E5%A4%87)
+  - [:point_right:nc- 网络端口检查](#point_rightnc--%E7%BD%91%E7%BB%9C%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%9F%A5)
   - [:point_right:curl - 文件传输工具](#point_rightcurl---%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7)
   - [wget - 下载网络文件](#wget---%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%BB%9C%E6%96%87%E4%BB%B6)
   - [host - 域名查询](#host---%E5%9F%9F%E5%90%8D%E6%9F%A5%E8%AF%A2)
@@ -1801,7 +1802,37 @@ ifconfig ens160 192.168.10.20 netmask 255.255.255.0
 telnet ip [port]
 ```
 
+## :point_right:nc- 网络端口检查
+
+**nc命令** 全称**netcat**，用于TCP、UDP或unix域套接字(uds)的数据流操作，它可以打开TCP连接，发送UDP数据包，监听任意TCP 和UDP端口，同时也可用作做端口扫描，支持IPv4和IPv6，与Telnet的不同在于nc可以编写脚本。
+
+```bash
+nc [-hlnruz][-g<网关...>][-G<指向器数目>][-i<延迟秒数>][-o<输出文件>][-p<通信端口>]
+[-s<来源位址>][-v...][-w<超时秒数>][主机名称][通信端口...]
+
+## 常用options
+-4 只使用IPV4
+-6 只使用IPV6
+-c 使用tls连接或者监听
+-D 启用socket调试开关
+-g <网关> # 设置路由器跃程通信网关，最多可设置8个。
+-G<指向器数目> # 设置来源路由指向器，其数值为4的倍数。
+-h 在线帮助。
+-i<延迟秒数> 设置时间间隔，以便传送信息及扫描通信端口。
+-l 使用监听模式，管控传入的资料。
+-n 直接使用IP地址，而不通过域名服务器。
+-o<输出文件> # 指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存。
+-p<通信端口> # 设置本地主机使用的通信端口。
+-r 乱数指定本地与远端主机的通信端口。
+-s<来源位址> # 设置本地主机送出数据包的IP地址。
+-u 使用UDP传输协议。
+-v 显示指令执行过程。
+-w<超时秒数> # 设置等待连线的时间。
+-z 使用0输入/输出模式，只在扫描通信端口时使用
+```
+
 ## :point_right:curl - 文件传输工具
+
 ```bash
 ## 常用options
 -o	指定新的本地文件名
